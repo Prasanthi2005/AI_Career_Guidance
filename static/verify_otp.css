@@ -1,0 +1,881 @@
+/* ======================================
+   Google Font
+====================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* ======================================
+   Reset
+====================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+/* ======================================
+   Body
+====================================== */
+
+body{
+    width:100%;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+     background:
+        radial-gradient(
+            circle at 10% 20%,
+            rgba(0, 229, 255, 0.16),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 90% 70%,
+            rgba(0, 132, 255, 0.18),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #020b24,
+            #061a45 48%,
+            #032b55
+        );
+    position:relative;
+}
+
+/* ======================================
+   Animated Background
+====================================== */
+
+.background{
+    position:absolute;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    z-index:0;
+}
+
+.background span{
+    position:absolute;
+    width:22px;
+    height:22px;
+    background:rgba(255,255,255,.08);
+    border-radius:50%;
+    animation:floatBubble 18s linear infinite;
+}
+
+.background span:nth-child(1){
+    left:8%;
+    animation-delay:0s;
+}
+
+.background span:nth-child(2){
+    left:24%;
+    animation-delay:3s;
+}
+
+.background span:nth-child(3){
+    left:42%;
+    animation-delay:6s;
+}
+
+.background span:nth-child(4){
+    left:62%;
+    animation-delay:2s;
+}
+
+.background span:nth-child(5){
+    left:82%;
+    animation-delay:5s;
+}
+
+.background span:nth-child(6){
+    left:94%;
+    animation-delay:8s;
+}
+
+@keyframes floatBubble{
+
+0%{
+    transform:translateY(100vh) scale(.4);
+    opacity:0;
+}
+
+
+20%{
+    opacity:1;
+}
+
+100%{
+    transform:translateY(-120vh) scale(1.5);
+    opacity:0;
+}
+
+}
+
+/* ======================================
+   Main Container
+====================================== */
+
+.container{
+    width:1150px;
+    height:700px;
+    display:flex;
+    border-radius:25px;
+    overflow:hidden;
+
+    background:transparent;
+    box-shadow:none;
+
+    position:relative;
+    z-index:1;
+}
+
+/* ======================================
+   Left Section
+====================================== */
+
+.left-section{
+
+    flex:1;
+
+    padding:60px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    background:transparent;
+
+    color:#fff;
+
+}
+
+.logo{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    margin-bottom:30px;
+
+}
+
+.logo i{
+
+    font-size:42px;
+
+    color:#00e5ff;
+
+}
+
+.logo h2{
+
+    font-size:28px;
+    color:#ffffff;
+
+}
+
+.left-section h1{
+
+    font-size:42px;
+
+    margin-bottom:20px;
+
+    line-height:1.2;
+    color:#ffffff;
+
+}
+
+.left-section p{
+
+    font-size:17px;
+
+    line-height:28px;
+
+    color:#dbeeff;
+
+    margin-bottom:35px;
+
+}
+
+.illustration{
+
+    width:100%;
+
+    max-width:400px;
+
+    margin:auto;
+
+    
+
+}
+
+@keyframes floatImage{
+
+0%{
+    transform:translateY(0);
+}
+
+
+50%{
+    transform:translateY(-15px);
+}
+
+100%{
+    transform:translateY(0);
+}
+
+}
+
+/* ======================================
+   Right Section
+====================================== */
+
+.right-section{
+
+    flex:1;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:40px;
+    background:transparent;
+
+}
+
+/* ======================================
+   OTP Card
+====================================== */
+
+.otp-card{
+    width:100%;
+    max-width:450px;
+
+    background:rgba(255,255,255,.12);
+
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+
+    border:1px solid rgba(255,255,255,.15);
+    border-radius:20px;
+    padding:40px;
+    box-shadow:0 15px 40px rgba(0,0,0,.3);
+}
+
+.otp-card:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:0 20px 45px rgba(0,229,255,.30);
+
+}
+
+.otp-card h2{
+
+    text-align:center;
+
+    color:#fff;
+
+    font-size:34px;
+
+    margin-bottom:10px;
+
+}
+
+.otp-card p{
+
+    text-align:center;
+
+    color:#dbeeff;
+
+    margin-bottom:30px;
+
+}
+/* ======================================
+   OTP Input Boxes
+====================================== */
+
+.otp-box{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    gap:12px;
+
+    margin-bottom:30px;
+
+}
+
+.otp-input{
+
+    width:58px;
+
+    height:60px;
+
+    border:none;
+
+    outline:none;
+
+    border-radius:12px;
+
+    background:rgba(255,255,255,.12);
+
+    border:1px solid rgba(255,255,255,.15);
+
+    color:#fff;
+
+    font-size:24px;
+
+    font-weight:600;
+
+    text-align:center;
+
+    transition:.3s;
+
+}
+
+.otp-input:focus{
+
+    border:1px solid #00e5ff;
+
+    box-shadow:0 0 15px rgba(0,229,255,.45);
+
+    transform:translateY(-3px);
+
+}
+
+.otp-input:hover{
+
+    transform:scale(1.05);
+
+}
+
+/* ======================================
+   Timer
+====================================== */
+
+.timer{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:8px;
+
+    margin-bottom:25px;
+
+    color:#fff;
+
+    font-size:16px;
+
+    font-weight:500;
+
+}
+
+.timer i{
+
+    color:#00e5ff;
+
+    font-size:18px;
+
+}
+
+#countdown{
+
+    color:#00e5ff;
+
+    font-weight:700;
+
+    letter-spacing:1px;
+
+}
+
+/* ======================================
+   Verify Button
+====================================== */
+
+.verify-btn{
+
+    width:100%;
+
+    height:55px;
+
+    border:none;
+
+    outline:none;
+
+    border-radius:12px;
+
+    background:linear-gradient(135deg,#00bcd4,#007bff);
+
+    color:#fff;
+
+    font-size:18px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.35s;
+
+}
+
+.verify-btn i{
+
+    margin-right:8px;
+
+}
+
+.verify-btn:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:0 10px 25px rgba(0,229,255,.35);
+
+}
+
+.verify-btn:active{
+
+    transform:scale(.98);
+
+}
+
+/* ======================================
+   Resend OTP
+====================================== */
+
+.resend{
+
+    margin-top:25px;
+
+    text-align:center;
+
+    color:#fff;
+
+    font-size:15px;
+
+}
+
+.resend a{
+
+    color:#00e5ff;
+
+    text-decoration:none;
+
+    font-weight:600;
+
+}
+
+.resend a:hover{
+
+    text-decoration:underline;
+
+}
+
+/* ======================================
+   Back To Login
+====================================== */
+
+.back{
+
+    margin-top:18px;
+
+    text-align:center;
+
+}
+
+.back a{
+
+    color:#dbeeff;
+
+    text-decoration:none;
+
+    font-size:15px;
+
+    transition:.3s;
+
+}
+
+.back a i{
+
+    margin-right:6px;
+
+}
+
+.back a:hover{
+
+    color:#00e5ff;
+
+}
+/* ======================================
+   Card Animation
+====================================== */
+
+.otp-card{
+    animation:fadeUp .8s ease;
+}
+
+@keyframes fadeUp{
+
+    from{
+        opacity:0;
+        transform:translateY(40px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+/* ======================================
+   Floating Glow Effect
+====================================== */
+
+.otp-card::before{
+
+    content:"";
+
+    position:relative;
+
+    inset:-2px;
+
+    border-radius:20px;
+
+    background:linear-gradient(
+        45deg,
+        #00e5ff,
+        #007bff,
+        #00e5ff
+    );
+
+    z-index:-1;
+
+    opacity:.18;
+
+    filter:blur(18px);
+
+}
+
+/* ======================================
+   Responsive
+====================================== */
+
+@media(max-width:992px){
+
+.container{
+
+    flex-direction:column;
+
+    width:95%;
+
+    height:auto;
+
+}
+
+.left-section,
+.right-section{
+
+    width:100%;
+
+    flex:none;
+
+}
+
+.left-section{
+
+    padding:40px;
+
+    text-align:center;
+
+}
+
+.logo{
+
+    justify-content:center;
+
+}
+
+.illustration{
+
+    max-width:250px;
+
+}
+
+.otp-card{
+
+    max-width:100%;
+
+}
+
+.otp-box{
+
+    justify-content:center;
+
+}
+
+}
+
+@media(max-width:768px){
+
+.left-section h1{
+
+    font-size:32px;
+
+}
+
+.left-section p{
+
+    font-size:15px;
+
+    line-height:24px;
+
+}
+
+.otp-card{
+
+    padding:30px 20px;
+
+}
+
+.otp-card h2{
+
+    font-size:28px;
+
+}
+
+.otp-input{
+
+    width:48px;
+
+    height:52px;
+
+    font-size:20px;
+
+}
+
+.verify-btn{
+
+    font-size:16px;
+
+}
+
+}
+
+@media(max-width:480px){
+
+body{
+
+    overflow:auto;
+
+}
+
+.container{
+
+    width:95%;
+
+    margin:20px auto;
+
+}
+
+.otp-box{
+
+    gap:8px;
+
+}
+
+.otp-input{
+
+    width:42px;
+
+    height:48px;
+
+    font-size:18px;
+
+}
+
+.timer{
+
+    font-size:14px;
+
+}
+
+.resend,
+.back{
+
+    font-size:14px;
+
+}
+
+}
+
+/* ======================================
+   Scrollbar
+====================================== */
+
+::-webkit-scrollbar{
+
+    width:8px;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:#00bcd4;
+
+    border-radius:10px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#041338;
+
+}
+
+/* ======================================
+   Hover Effects
+====================================== */
+
+.otp-input:hover{
+
+    transform:translateY(-3px);
+
+}
+
+.verify-btn:hover{
+
+    letter-spacing:.5px;
+
+}
+
+/* ======================================
+   Smooth Transition
+====================================== */
+
+*{
+
+    transition:.3s ease;
+
+}
+
+/* ======================================
+   Floating Animation
+====================================== */
+
+@keyframes floating{
+
+    0%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-8px);
+    }
+
+    100%{
+        transform:translateY(0);
+    }
+
+}
+
+.illustration{
+
+    animation:floating 4s ease-in-out infinite;
+
+}
+
+/* ======================================
+   Timer Blink
+====================================== */
+
+@keyframes blink{
+
+    0%{
+        opacity:1;
+    }
+
+    50%{
+        opacity:.4;
+    }
+
+    100%{
+        opacity:1;
+    }
+
+}
+
+#countdown{
+
+    animation:blink 1s infinite;
+
+}
+
+/* ======================================
+   Button Loading State
+====================================== */
+
+.verify-btn:disabled{
+
+    opacity:.7;
+
+    cursor:not-allowed;
+
+}
+
+/* ======================================
+   Glass Shine Effect
+====================================== */
+
+.otp-card::after{
+
+    content:"";
+
+    position:absolute;
+
+    top:-120%;
+
+    left:-50%;
+
+    width:60%;
+
+    height:250%;
+
+    background:rgba(255,255,255,.08);
+
+    transform:rotate(25deg);
+
+    animation:shine 6s linear infinite;
+
+}
+
+@keyframes shine{
+
+    0%{
+
+        left:-70%;
+
+    }
+
+    100%{
+
+        left:160%;
+
+    }
+
+}

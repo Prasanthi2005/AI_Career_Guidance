@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>{{ skill|title }} Notes | AI Career Guidance</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='learning_notes.css') }}">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body>
+
+    <!-- =========================================
+         HEADER
+    ========================================== -->
+
+    <header class="notes-header">
+
+        <div class="brand">
+
+            <span class="brand-ai">AI</span>
+
+            <span>
+                Career Guidance & Placement Platform
+            </span>
+
+        </div>
+
+        <a href="{{ url_for('learning', skill=skill) }}"
+           class="back-btn">
+
+            <i class="fa-solid fa-arrow-left"></i>
+
+            Back to Learning
+
+        </a>
+
+    </header>
+
+
+    <!-- =========================================
+         MAIN
+    ========================================== -->
+
+    <main class="notes-container">
+
+
+        <!-- =====================================
+             TITLE
+        ====================================== -->
+
+        <section class="notes-hero">
+
+            <div class="hero-icon">
+
+                <i class="fa-solid fa-book-open"></i>
+
+            </div>
+
+            <div>
+
+                <span class="hero-label">
+                    STUDY NOTES
+                </span>
+
+                <h1>
+                    {{ skill|title }}
+                </h1>
+
+                <p>
+                    Learn important concepts, definitions,
+                    examples and interview-focused topics.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             SEARCH
+        ====================================== -->
+
+        <div class="search-box">
+
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+            <input
+                type="text"
+                id="notesSearch"
+                placeholder="Search notes..."
+            >
+
+        </div>
+
+
+        <!-- =====================================
+             NOTES CONTENT
+        ====================================== -->
+
+        <section class="notes-list">
+
+
+            {% if skill|lower == "data structures" %}
+
+
+            <!-- 1. INTRODUCTION -->
+
+            <article class="note-card">
+
+                <div class="note-number">
+                    01
+                </div>
+
+                <div class="note-content">
+
+                    <h2>
+                        What are Data Structures?
+                    </h2>
+
+                    <p>
+                        A data structure is a way of organizing
+                        and storing data so that it can be accessed
+                        and modified efficiently.
+                    </p>
+
+                    <div class="concept-box">
+
+                        <strong>Key Idea</strong>
+
+                        <p>
+                            Good data structures help programs
+                            store, search, insert, delete and
+                            process data efficiently.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- 2. TYPES -->
+
+            <article class="note-card">
+
+                <div class="note-number">
+                    02
+                </div>
+
+                <div class="note-content">
+
+                    <h2>
+                        Types of Data Structures
+                    </h2>
+
+                    <p>
+                        Data structures are commonly divided
+                        into two major categories.
+                    </p>
+
+                    <ul>
+
+                        <li>
+                            <strong>Linear:</strong>
+                            Array, Linked List, Stack and Queue
+                        </li>
+
+                        <li>
+                            <strong>Non-Linear:</strong>
+                            Tree and Graph
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </article>
+
+
+            <!-- 3. ARRAY -->
+
+            <article class="note-card">
+
+                <div class="note-number">
+                    03
+                </div>
+
+                <div class="note-content">
+
+                    <h2>
+                        Array
+                    </h2>
+
+                    <p>
+                        An array stores multiple elements in
+                        a contiguous sequence of memory.
+                    </p>
+
+                    <div class="code-box">
+
+<pre><code>int numbers[] = {10, 20, 30, 40, 50};</code></pre>
+
+                    </div>
+
+                    <h3>Important Points</h3>
+
+                    <ul>
+
+                        <li>Elements are accessed using indexes.</li>
+
+                        <li>Index usually starts from 0.</li>
+
+                        <li>Fast random access.</li>
+
+                    </ul>
+
+                </div>
+
+            </article>
+
+
+            <!-- 4. LINKED LIST -->
+
+            <article class="note-card">
+
+                <div class="note-number">
+                    04
+                </div>
+
+                <div class="note-content">
+
+                    <h2>
+                        Linked List
+                    </h2>
+
+                    <p>
+                        A linked list consists of nodes where each
+                        node contains data and a reference to another
+                        node.
+                    </p>
+
+                    <div class="concept-box">
+
+                        <strong>Common Types</strong>
+
+                        <p>
+                            Singly Linked List,
+                            Doubly Linked List and
+                            Circular Linked List.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- 5. STACK -->
+
+            <article class="note-card">
+
+                <div class="note-number">
+                    05
+                </div>
+
+                <div class="note-content">
+
+                    <h2>
+                        Stack
+                    </h2>
+
+                    <p>
+                        Stack follows the
+                        <strong>LIFO</strong> principle.
+                    </p>
+
+                    <div class="concept-box">
+
+                        <strong>
+                            LIFO = Last In, First Out
+                        </strong>
+
+                        <p>
+                            The last element inserted into
+                            the stack is removed first.
+                        </p>
+
+                    </div>
+
+                    <h3>Applications</h3>
+
+                    <ul>
+
+                        <li>Function calls</li>
+
+                        <li>Undo operations</li>
+
+                        <li>Expression evaluation</li>
+
+                        <li>Browser history</li>
+
+                    </ul>
+
+                </div>
+
+            </article>
+
+
+            <!-- 6. QUEUE -->
+
+            <article class="note-card">
+
+                <div class="note-number">
+                    06
+                </div>
+
+                <div class="note-content">
+
+                    <h2>
+                        Queue
+                    </h2>
+
+                    <p>
+                        Queue follows the
+                        <strong>FIFO</strong> principle.
+                    </p>
+
+                    <div class="concept-box">
+
+                        <strong>
+                            FIFO = First In, First Out
+                        </strong>
+
+                        <p>
+                            The first element inserted is
+                            removed first.
+                        </p>
+
+                    </div>
+
+                    <h3>Applications</h3>
+
+                    <ul>
+
+                        <li>Printer queues</li>
+
+                        <li>CPU scheduling</li>
+
+                        <li>Task processing</li>
+
+                    </ul>
+
+                </div>
+
+            </article>
+
+
+            <!-- 7. TREE -->
+
+            <article class="note-card">
+
+                <div class="note-number">
+                    07
+                </div>
+
+                <div class="note-content">
+
+                    <h2>
+                        Tree
+                    </h2>
+
+                    <p>
+                        A tree is a non-linear data structure
+                        consisting of nodes connected by edges.
+                    </p>
+
+                    <ul>
+
+                        <li>Root</li>
+
+                        <li>Parent</li>
+
+                        <li>Child</li>
+
+                        <li>Leaf</li>
+
+                        <li>Subtree</li>
+
+                    </ul>
+
+                    <div class="concept-box">
+
+                        <strong>Common Tree</strong>
+
+                        <p>
+                            Binary Tree and Binary Search Tree
+                            are frequently asked in interviews.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- 8. GRAPH -->
+
+            <article class="note-card">
+
+                <div class="note-number">
+                    08
+                </div>
+
+                <div class="note-content">
+
+                    <h2>
+                        Graph
+                    </h2>
+
+                    <p>
+                        A graph consists of vertices and edges
+                        used to represent relationships between
+                        different entities.
+                    </p>
+
+                    <div class="concept-box">
+
+                        <strong>Common Applications</strong>
+
+                        <p>
+                            Social networks, maps, network routing
+                            and recommendation systems.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- 9. HASH TABLE -->
+
+            <article class="note-card">
+
+                <div class="note-number">
+                    09
+                </div>
+
+                <div class="note-content">
+
+                    <h2>
+                        Hash Table
+                    </h2>
+
+                    <p>
+                        A hash table stores data using
+                        key-value relationships.
+                    </p>
+
+                    <div class="code-box">
+
+<pre><code>{
+    "name": "Bhavani",
+    "role": "Developer"
+}</code></pre>
+
+                    </div>
+
+                    <p>
+                        Hashing is commonly used for fast
+                        lookup operations.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <!-- 10. COMPLEXITY -->
+
+            <article class="note-card">
+
+                <div class="note-number">
+                    10
+                </div>
+
+                <div class="note-content">
+
+                    <h2>
+                        Time & Space Complexity
+                    </h2>
+
+                    <p>
+                        Complexity helps us understand how
+                        efficiently an algorithm uses time
+                        and memory.
+                    </p>
+
+                    <div class="complexity-grid">
+
+                        <div>
+                            <strong>O(1)</strong>
+                            <span>Constant</span>
+                        </div>
+
+                        <div>
+                            <strong>O(log n)</strong>
+                            <span>Logarithmic</span>
+                        </div>
+
+                        <div>
+                            <strong>O(n)</strong>
+                            <span>Linear</span>
+                        </div>
+
+                        <div>
+                            <strong>O(n²)</strong>
+                            <span>Quadratic</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- 11. INTERVIEW -->
+
+            <article class="note-card interview-card">
+
+                <div class="note-number">
+                    11
+                </div>
+
+                <div class="note-content">
+
+                    <h2>
+                        Interview Questions
+                    </h2>
+
+                    <ol>
+
+                        <li>
+                            What is a data structure?
+                        </li>
+
+                        <li>
+                            Difference between Array and Linked List?
+                        </li>
+
+                        <li>
+                            Explain Stack and Queue.
+                        </li>
+
+                        <li>
+                            What is LIFO?
+                        </li>
+
+                        <li>
+                            What is FIFO?
+                        </li>
+
+                        <li>
+                            What is a Binary Search Tree?
+                        </li>
+
+                        <li>
+                            What is Big-O notation?
+                        </li>
+
+                    </ol>
+
+                </div>
+
+            </article>
+
+
+            {% else %}
+
+
+            <!-- GENERIC NOTES -->
+
+            <article class="note-card">
+
+                <div class="note-number">
+                    01
+                </div>
+
+                <div class="note-content">
+
+                    <h2>
+                        {{ skill|title }} Fundamentals
+                    </h2>
+
+                    <p>
+                        Study the fundamentals of
+                        <strong>{{ skill|title }}</strong>
+                        and understand its important concepts,
+                        terminology and practical applications.
+                    </p>
+
+                    <div class="concept-box">
+
+                        <strong>
+                            Learning Goal
+                        </strong>
+
+                        <p>
+                            Build a strong foundation in
+                            {{ skill|title }} and apply the concepts
+                            through practical projects and practice.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            {% endif %}
+
+
+        </section>
+
+
+        <!-- =====================================
+             FOOTER ACTION
+        ====================================== -->
+
+        <div class="notes-footer">
+
+            <a href="{{ url_for('learning', skill=skill) }}"
+               class="continue-btn">
+
+                <i class="fa-solid fa-arrow-left"></i>
+
+                Back to Learning
+
+            </a>
+
+        </div>
+
+    </main>
+
+
+    <script>
+
+        const notesSkill =
+            {{ skill|tojson }};
+
+    </script>
+
+    <script src="{{ url_for('static', filename='learning_notes.js') }}">
+    </script>
+
+</body>
+
+</html>

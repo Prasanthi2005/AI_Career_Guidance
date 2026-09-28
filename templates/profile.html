@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Profile | AI Career Guidance</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='profile.css') }}">
+
+</head>
+
+<body>
+
+    <!-- =====================================================
+     HEADER
+===================================================== -->
+
+    <header class="profile-header">
+
+        <div class="brand">
+
+            <div class="brand-icon">
+                <i class="fa-solid fa-brain"></i>
+            </div>
+
+            <div>
+                <div class="brand-title">
+                    AI Career Guidance
+                </div>
+
+                <div class="brand-subtitle">
+                    Placement Platform
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="header-actions">
+
+            <a href="{{ url_for('dashboard') }}" class="back-dashboard">
+
+                <i class="fa-solid fa-arrow-left"></i> Dashboard
+
+            </a>
+
+
+            <div class="welcome-user">
+
+                <i class="fa-solid fa-circle-user"></i>
+
+                <span>
+                {{ fullname }}
+            </span>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- =====================================================
+     FLASH MESSAGES
+===================================================== -->
+
+    {% with messages = get_flashed_messages(with_categories=true) %} {% if messages %}
+
+    <div class="flash-container">
+
+        {% for category, message in messages %}
+
+        <div class="flash-message {{ category }}">
+
+            {% if category == "success" %}
+
+            <i class="fa-solid fa-circle-check"></i> {% else %}
+
+            <i class="fa-solid fa-circle-exclamation"></i> {% endif %}
+
+            <span>
+                        {{ message }}
+                    </span>
+
+            <button type="button" class="flash-close">
+
+                        <i class="fa-solid fa-xmark"></i>
+
+                    </button>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+    {% endif %} {% endwith %}
+
+
+    <!-- =====================================================
+     MAIN
+===================================================== -->
+
+    <main class="profile-page">
+
+
+        <!-- PAGE INTRO -->
+
+        <section class="profile-intro">
+
+            <div>
+
+                <span class="eyebrow">
+                PERSONAL PROFILE
+            </span>
+
+                <h1>
+                    Build Your
+                    <span>Professional Profile</span>
+                </h1>
+
+                <p>
+                    Keep your education, skills, projects and professional links updated so the platform can provide better career guidance and placement recommendations.
+                </p>
+
+            </div>
+
+
+            <div class="profile-status">
+
+                <div class="status-icon">
+
+                    <i class="fa-solid fa-sparkles"></i>
+
+                </div>
+
+                <div>
+
+                    <strong>
+                    AI Profile
+                </strong>
+
+                    <span>
+                    Ready for career matching
+                </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+         FORM
+    ================================================== -->
+
+        <form id="profileForm" action="{{ url_for('save_profile') }}" method="POST" enctype="multipart/form-data">
+
+
+            <div class="profile-layout">
+
+
+                <!-- =================================================
+                 LEFT SIDEBAR
+            ================================================== -->
+
+                <aside class="profile-sidebar">
+
+
+                    <div class="avatar-card">
+
+
+                        <div class="avatar-wrapper">
+
+                            {% if user and user[12] %}
+
+                            <img id="profilePreview" src="{{ url_for('static', filename='uploads/' +user[12]) }}" alt="Profile Photo"> {% else %}
+
+                            <div class="default-avatar" id="defaultAvatar">
+
+                                <i class="fa-solid fa-user"></i>
+
+                            </div>
+
+                            <img id="profilePreview" class="hidden-photo" src="" alt="Profile Photo"> {% endif %}
+
+                            <span class="online-dot"></span>
+
+                        </div>
+
+
+                        <h2 id="sidebarName">
+                            {{ user[1] if user else fullname }}
+                        </h2>
+
+
+                        <p>
+                            Student / Job Seeker
+                        </p>
+
+
+                        <label for="photo" class="photo-button">
+
+                        <i class="fa-solid fa-camera"></i>
+
+                        Change Photo
+
+                    </label>
+
+
+                        <input type="file" id="photo" name="photo" accept="image/png,image/jpeg,image/jpg,image/gif,image/webp" hidden>
+
+
+                        <small class="photo-hint">
+                        JPG, PNG, GIF or WEBP
+                    </small>
+
+                    </div>
+
+
+                    <!-- COMPLETION -->
+
+                    <div class="completion-card">
+
+                        <div class="completion-top">
+
+                            <span>
+                            Profile Completion
+                        </span>
+
+                            <strong id="completionPercent">
+                            0%
+                        </strong>
+
+                        </div>
+
+
+                        <div class="progress-track">
+
+                            <div id="completionBar" class="progress-bar">
+                            </div>
+
+                        </div>
+
+
+                        <p>
+                            Complete your profile to improve AI career recommendations.
+                        </p>
+
+                    </div>
+
+
+                    <!-- QUICK INFO -->
+
+                    <div class="quick-card">
+
+                        <div class="quick-item">
+
+                            <i class="fa-solid fa-graduation-cap"></i>
+
+                            <div>
+
+                                <span>
+                                Education
+                            </span>
+
+                                <strong>
+                                {{ user[4] if user and user[4] else "Not added" }}
+                            </strong>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="quick-item">
+
+                            <i class="fa-solid fa-code"></i>
+
+                            <div>
+
+                                <span>
+                                Skills
+                            </span>
+
+                                <strong id="skillQuickCount">
+                                0
+                            </strong>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </aside>
+
+
+                <!-- =================================================
+                 RIGHT CONTENT
+            ================================================== -->
+
+                <section class="profile-content">
+
+
+                    <!-- PERSONAL INFORMATION -->
+
+                    <div class="content-card">
+
+                        <div class="section-title">
+
+                            <div class="section-icon">
+                                <i class="fa-solid fa-user"></i>
+                            </div>
+
+                            <div>
+
+                                <h2>
+                                    Personal Information
+                                </h2>
+
+                                <p>
+                                    Your basic personal and academic details
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-grid">
+
+
+                            <!-- FULL NAME -->
+
+                            <div class="form-field">
+
+                                <label>
+                                Full Name
+                            </label>
+
+                                <div class="input-box">
+
+                                    <i class="fa-solid fa-user"></i>
+
+                                    <input type="text" name="fullname" id="fullname" value="{{ user[1] if user else '' }}" placeholder="Enter your full name" required>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- EMAIL -->
+
+                            <div class="form-field">
+
+                                <label>
+                                Email Address
+                            </label>
+
+                                <div class="input-box disabled">
+
+                                    <i class="fa-solid fa-envelope"></i>
+
+                                    <input type="email" name="email" value="{{ user[2] if user else '' }}" readonly>
+
+                                    <i class="fa-solid fa-lock lock-icon"></i>
+
+                                </div>
+
+                                <small>
+                                Email cannot be changed.
+                            </small>
+
+                            </div>
+
+
+                            <!-- PHONE -->
+
+                            <div class="form-field">
+
+                                <label>
+                                Phone Number
+                            </label>
+
+                                <div class="input-box">
+
+                                    <i class="fa-solid fa-phone"></i>
+
+                                    <input type="tel" name="phone" id="phone" maxlength="10" inputmode="numeric" value="{{ user[3] if user and user[3] else '' }}" placeholder="10 digit mobile number">
+
+                                </div>
+
+                                <small id="phoneMessage"></small>
+
+                            </div>
+
+
+                            <!-- COLLEGE -->
+
+                            <div class="form-field">
+
+                                <label>
+                                College Name
+                            </label>
+
+                                <div class="input-box">
+
+                                    <i class="fa-solid fa-building-columns"></i>
+
+                                    <input type="text" name="college" value="{{ user[4] if user and user[4] else '' }}" placeholder="Enter college name">
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- BRANCH -->
+
+                            <div class="form-field">
+
+                                <label>
+                                Branch
+                            </label>
+
+                                <div class="input-box">
+
+                                    <i class="fa-solid fa-code-branch"></i>
+
+                                    <input type="text" name="branch" value="{{ user[5] if user and user[5] else '' }}" placeholder="Computer Science Engineering">
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- CGPA -->
+
+                            <div class="form-field">
+
+                                <label>
+                                CGPA
+                            </label>
+
+                                <div class="input-box">
+
+                                    <i class="fa-solid fa-graduation-cap"></i>
+
+                                    <input type="number" name="cgpa" id="cgpa" min="0" max="10" step="0.01" value="{{ user[6] if user and user[6] is not none else '' }}" placeholder="0 - 10">
+
+                                </div>
+
+                                <small id="cgpaMessage"></small>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =================================================
+                     SKILLS
+                ================================================== -->
+
+                    <div class="content-card">
+
+                        <div class="section-title">
+
+                            <div class="section-icon">
+                                <i class="fa-solid fa-code"></i>
+                            </div>
+
+                            <div>
+
+                                <h2>
+                                    Technical Skills
+                                </h2>
+
+                                <p>
+                                    Skills used by AI for career matching
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-field full">
+
+                            <label>
+                            Your Skills
+                        </label>
+
+                            <div class="textarea-box">
+
+                                <i class="fa-solid fa-terminal"></i>
+
+                                <textarea name="skills" id="skills" maxlength="1000" placeholder="Python, Java, HTML, CSS, JavaScript, Flask, MySQL...">{{ user[7]if user and user[7] else '' }}</textarea>
+
+                            </div>
+
+                            <div class="counter-row">
+
+                                <span>
+                                Add your technical skills separated by commas.
+                            </span>
+
+                                <strong>
+                                <span id="skillsCount">0</span>/1000
+                            </strong>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =================================================
+                     PROJECTS
+                ================================================== -->
+
+                    <div class="content-card">
+
+                        <div class="section-title">
+
+                            <div class="section-icon">
+                                <i class="fa-solid fa-diagram-project"></i>
+                            </div>
+
+                            <div>
+
+                                <h2>
+                                    Projects
+                                </h2>
+
+                                <p>
+                                    Showcase your development and academic work
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-field full">
+
+                            <label>
+                            Projects
+                        </label>
+
+                            <div class="textarea-box large">
+
+                                <i class="fa-solid fa-laptop-code"></i>
+
+                                <textarea name="projects" id="projects" maxlength="1500" placeholder="Example: CodeMaster - Flask coding platform...">{{ user[8]if user and user[8] else '' }}</textarea>
+
+                            </div>
+
+                            <div class="counter-row">
+
+                                <span>
+                                Mention project names, technologies and achievements.
+                            </span>
+
+                                <strong>
+                                <span id="projectsCount">0</span>/1500
+                            </strong>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =================================================
+                     CERTIFICATIONS
+                ================================================== -->
+
+                    <div class="content-card">
+
+                        <div class="section-title">
+
+                            <div class="section-icon">
+                                <i class="fa-solid fa-certificate"></i>
+                            </div>
+
+                            <div>
+
+                                <h2>
+                                    Certifications
+                                </h2>
+
+                                <p>
+                                    Add your professional and technical certifications
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-field full">
+
+                            <label>
+                            Certifications
+                        </label>
+
+                            <div class="textarea-box">
+
+                                <i class="fa-solid fa-award"></i>
+
+                                <textarea name="certifications" id="certifications" maxlength="1500" placeholder="Python Certification, Generative AI, Web Development...">{{ user[9] if user and user[9] else '' }}</textarea>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =================================================
+                     PROFESSIONAL LINKS
+                ================================================== -->
+
+                    <div class="content-card">
+
+                        <div class="section-title">
+
+                            <div class="section-icon">
+                                <i class="fa-solid fa-link"></i>
+                            </div>
+
+                            <div>
+
+                                <h2>
+                                    Professional Links
+                                </h2>
+
+                                <p>
+                                    Help recruiters discover your work
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-grid">
+
+
+                            <!-- GITHUB -->
+
+                            <div class="form-field">
+
+                                <label>
+                                GitHub
+                            </label>
+
+                                <div class="input-box">
+
+                                    <i class="fa-brands fa-github"></i>
+
+                                    <input type="url" name="github" id="github" value="{{user[10]if user and user[10]else '' }}" placeholder="https://github.com/username">
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- LINKEDIN -->
+
+                            <div class="form-field">
+
+                                <label>
+                                LinkedIn
+                            </label>
+
+                                <div class="input-box">
+
+                                    <i class="fa-brands fa-linkedin"></i>
+
+                                    <input type="url" name="linkedin" id="linkedin" value="{{ user[11] if user and user[11] else '' }}" placeholder="https://linkedin.com/in/username">
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =================================================
+                     SAVE AREA
+                ================================================== -->
+
+                    <div class="save-panel">
+
+                        <div class="save-status">
+
+                            <div class="security-icon">
+
+                                <i class="fa-solid fa-shield-halved"></i>
+
+                            </div>
+
+                            <div>
+
+                                <strong>
+                                Your information is secure
+                            </strong>
+
+                                <span>
+                                Changes are saved to your account.
+                            </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <button type="submit" class="save-button" id="saveBtn">
+
+                        <i class="fa-solid fa-floppy-disk"></i>
+
+                        <span>
+                            Save Profile
+                        </span>
+
+                    </button>
+
+                    </div>
+
+                </section>
+
+            </div>
+
+        </form>
+
+    </main>
+
+
+    <!-- =====================================================
+     TOAST
+===================================================== -->
+
+    <div id="toast" class="toast">
+
+        <i class="fa-solid fa-circle-check"></i>
+
+        <span id="toastMessage">
+        Profile updated successfully!
+    </span>
+
+    </div>
+
+
+    <script src="{{ url_for('static', filename='profile.js') }}"></script>
+
+</body>
+
+</html>

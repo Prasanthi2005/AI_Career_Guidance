@@ -1,0 +1,1332 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Student Dashboard | AI Career Guidance</title>
+
+
+    <!-- =========================================
+         GOOGLE FONT
+    ========================================== -->
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+
+    <!-- =========================================
+         FONT AWESOME
+    ========================================== -->
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+
+    <!-- =========================================
+         DASHBOARD CSS
+    ========================================== -->
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='dashboard.css') }}">
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================
+     ANIMATED BACKGROUND
+========================================= -->
+
+<div class="background-animation">
+
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+
+</div>
+
+
+
+<!-- =========================================
+     HEADER
+========================================= -->
+
+<header class="dashboard-header">
+
+
+    <!-- BRAND -->
+
+    <div class="brand">
+
+        <div class="brand-icon">
+
+            <i class="fa-solid fa-brain"></i>
+
+        </div>
+
+
+        <div>
+
+            <h2>
+                AI Career Guidance
+            </h2>
+
+            <p>
+                Placement Platform
+            </p>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- HEADER ACTIONS -->
+
+    <div class="header-actions">
+
+
+        <!-- USER -->
+
+        <div class="user-profile">
+
+            <div class="user-icon">
+
+                <i class="fa-solid fa-user"></i>
+
+            </div>
+
+
+            <div class="user-text">
+
+                <span>
+                    Welcome
+                </span>
+
+                <strong>
+                    {{ fullname }}
+                </strong>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- LOGOUT -->
+
+        <a href="{{ url_for('logout') }}"
+           class="logout-btn"
+           title="Logout">
+
+            <i class="fa-solid fa-right-from-bracket"></i>
+
+            <span>
+                Logout
+            </span>
+
+        </a>
+
+
+    </div>
+
+</header>
+
+
+
+<!-- =========================================
+     MAIN LAYOUT
+========================================= -->
+
+<div class="dashboard-layout">
+
+
+
+<!-- =========================================
+     SIDEBAR
+========================================= -->
+
+<aside class="sidebar">
+
+
+    <!-- SIDEBAR TITLE -->
+
+    <div class="sidebar-title">
+
+        <i class="fa-solid fa-layer-group"></i>
+
+        <span>
+            Career Menu
+        </span>
+
+    </div>
+
+
+
+    <!-- DASHBOARD -->
+
+    <a href="/dashboard"
+       class="side-link active">
+
+        <i class="fa-solid fa-house"></i>
+
+        <span>
+            Dashboard
+        </span>
+
+    </a>
+
+
+
+    <!-- PROFILE -->
+
+    <a href="/profile"
+       class="side-link">
+
+        <i class="fa-solid fa-user"></i>
+
+        <span>
+            My Profile
+        </span>
+
+    </a>
+
+
+
+    <!-- RESUME -->
+
+    <a href="/resume"
+       class="side-link">
+
+        <i class="fa-solid fa-file-lines"></i>
+
+        <span>
+            Resume Analyzer
+        </span>
+
+    </a>
+
+
+
+    <!-- CAREER -->
+
+    <a href="/career"
+       class="side-link">
+
+        <i class="fa-solid fa-compass"></i>
+
+        <span>
+            Career Recommendation
+        </span>
+
+    </a>
+     <!-- SKILL GAP -->
+
+    <a href="/skill-gap"
+       class="side-link">
+
+        <i class="fa-solid fa-code"></i>
+
+        <span>
+            Skill Gap Analysis
+        </span>
+
+    </a>
+
+
+
+    <!-- PLACEMENT -->
+
+    <a href="/placement"
+       class="side-link">
+
+        <i class="fa-solid fa-chart-line"></i>
+
+        <span>
+            Placement Prediction
+        </span>
+
+    </a>
+
+
+
+   
+
+
+
+    <!-- INTERVIEW -->
+
+    <a href="/interview"
+       class="side-link">
+
+        <i class="fa-solid fa-comments"></i>
+
+        <span>
+            AI Mock Interview
+        </span>
+
+    </a>
+
+
+
+    <!-- JOBS -->
+
+    <a href="/jobs"
+       class="side-link">
+
+        <i class="fa-solid fa-briefcase"></i>
+
+        <span>
+            Job Recommendations
+        </span>
+
+    </a>
+
+
+
+    <!-- =========================================
+         AI ASSISTANT BUTTON
+    ========================================== -->
+
+    <button type="button"
+            class="sidebar-bottom"
+            id="openAiAssistant">
+
+
+        <i class="fa-solid fa-robot"></i>
+
+
+        <div>
+
+            <strong>
+                AI Career Assistant
+            </strong>
+
+            <p>
+                Ask AI about your career.
+            </p>
+
+        </div>
+
+
+        <i class="fa-solid fa-arrow-right assistant-arrow"></i>
+
+
+    </button>
+
+
+</aside>
+
+
+
+<!-- =========================================
+     MAIN CONTENT
+========================================= -->
+
+<main class="main-content">
+
+
+
+<!-- =========================================
+     WELCOME HERO
+========================================= -->
+
+<section class="welcome-section">
+
+
+    <div class="welcome-content">
+
+
+        <span class="welcome-badge">
+
+            <i class="fa-solid fa-sparkles"></i>
+
+            AI POWERED CAREER JOURNEY
+
+        </span>
+
+
+
+        <h1>
+
+            Welcome back,
+
+            <span>
+                {{ fullname }}
+            </span>
+
+            👋
+
+        </h1>
+
+
+
+        <p>
+
+            Your AI-powered career journey starts here.
+            Analyze your resume, improve your skills,
+            discover suitable jobs and prepare for placements.
+
+        </p>
+
+
+
+        <!-- HERO BUTTONS -->
+
+        <div class="hero-buttons">
+
+
+            <a href="/resume"
+               class="primary-btn">
+
+                <i class="fa-solid fa-file-arrow-up"></i>
+
+                Analyze Resume
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </a>
+
+
+
+            <a href="/career"
+               class="secondary-btn">
+
+                <i class="fa-solid fa-compass"></i>
+
+                Explore Career
+
+            </a>
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- AI ORB -->
+
+    <div class="ai-orb">
+
+
+        <div class="orb-ring ring-one"></div>
+
+        <div class="orb-ring ring-two"></div>
+
+
+        <div class="orb-core">
+
+            <i class="fa-solid fa-brain"></i>
+
+        </div>
+
+
+        <span class="orb-dot dot-one"></span>
+
+        <span class="orb-dot dot-two"></span>
+
+        <span class="orb-dot dot-three"></span>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =========================================
+     STAT CARDS
+========================================= -->
+
+<section class="stats-grid">
+
+
+
+    <!-- RESUME SCORE -->
+
+    <div class="stat-card">
+
+
+        <div class="stat-icon">
+
+            <i class="fa-solid fa-file-circle-check"></i>
+
+        </div>
+
+
+        <div class="stat-content">
+
+            <p>
+                Resume Score
+            </p>
+
+
+            <h2 class="counter"
+                data-target="{{ resume_score }}">
+                0
+            </h2>
+
+            <span>
+                %
+            </span>
+
+
+            <div class="progress">
+
+                <div class="progress-bar"
+                     data-width="{{ resume_score }}%">
+                </div>
+
+            </div>
+
+
+            <small>
+                ATS optimization score
+            </small>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- PLACEMENT CHANCE -->
+
+    <div class="stat-card">
+
+
+        <div class="stat-icon">
+
+            <i class="fa-solid fa-chart-line"></i>
+
+        </div>
+
+
+        <div class="stat-content">
+
+            <p>
+                Placement Chance
+            </p>
+
+
+            <h2 class="counter"
+                data-target="{{ placement_chance }}">
+                0
+            </h2>
+
+            <span>
+                %
+            </span>
+
+
+            <div class="progress">
+
+                <div class="progress-bar"
+                     data-width="{{ placement_chance }}%">
+                </div>
+
+            </div>
+
+
+            <small>
+                AI predicted probability
+            </small>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- SKILLS -->
+
+    <div class="stat-card">
+
+
+        <div class="stat-icon">
+
+            <i class="fa-solid fa-code"></i>
+
+        </div>
+
+
+        <div class="stat-content">
+
+            <p>
+                Skills Completed
+            </p>
+
+
+            <h2 class="counter"
+                data-target="{{ skills_count }}">
+                0
+            </h2>
+
+
+            <span>
+                Skills
+            </span>
+
+
+            <div class="progress">
+
+                <div class="progress-bar"
+                     data-width="{{ [skills_count * 10, 100] | min }}%">
+                </div>
+
+            </div>
+
+
+            <small>
+                Technical skills detected
+            </small>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- JOBS -->
+
+    <div class="stat-card">
+
+
+        <div class="stat-icon">
+
+            <i class="fa-solid fa-briefcase"></i>
+
+        </div>
+
+
+        <div class="stat-content">
+
+            <p>
+                Jobs Applied
+            </p>
+
+
+            <h2 class="counter"
+                data-target="{{ jobs_applied }}">
+                0
+            </h2>
+
+
+            <span>
+                Jobs
+            </span>
+
+
+            <div class="progress">
+
+                <div class="progress-bar"
+                     data-width="{{ [jobs_applied * 20, 100] | min }}%">
+                </div>
+
+            </div>
+
+
+            <small>
+                Keep applying 🚀
+            </small>
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =========================================
+     CAREER JOURNEY
+========================================= -->
+
+<section class="journey-card">
+
+
+    <div class="section-heading">
+
+
+        <div>
+
+            <span class="section-tag">
+                YOUR AI JOURNEY
+            </span>
+
+
+            <h2>
+                Build Your Career Step by Step
+            </h2>
+
+
+            <p>
+                Complete these steps to improve your placement readiness.
+            </p>
+
+        </div>
+
+
+        <i class="fa-solid fa-route"></i>
+
+
+    </div>
+
+
+
+    <div class="journey">
+
+
+        <!-- STEP 1 -->
+
+        <div class="journey-step completed">
+
+
+            <div class="step-number">
+
+                <i class="fa-solid fa-check"></i>
+
+            </div>
+
+
+            <div>
+
+                <h3>
+                    Build Profile
+                </h3>
+
+
+                <p>
+                    Add your education and skills.
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+
+        <div class="journey-line"></div>
+
+
+
+        <!-- STEP 2 -->
+
+        <div class="journey-step">
+
+
+            <div class="step-number">
+                02
+            </div>
+
+
+            <div>
+
+                <h3>
+                    Analyze Resume
+                </h3>
+
+
+                <p>
+                    Improve your ATS resume score.
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+
+        <div class="journey-line"></div>
+
+
+
+        <!-- STEP 3 -->
+
+        <div class="journey-step">
+
+
+            <div class="step-number">
+                03
+            </div>
+
+
+            <div>
+
+                <h3>
+                    Improve Skills
+                </h3>
+
+
+                <p>
+                    Identify and close skill gaps.
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+
+        <div class="journey-line"></div>
+
+
+
+        <!-- STEP 4 -->
+
+        <div class="journey-step">
+
+
+            <div class="step-number">
+                04
+            </div>
+
+
+            <div>
+
+                <h3>
+                    Get Placed
+                </h3>
+
+
+                <p>
+                    Find jobs and prepare for interviews.
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =========================================
+     QUICK ACTIONS
+========================================= -->
+
+<section class="quick-section">
+
+
+    <div class="section-heading">
+
+
+        <div>
+
+            <span class="section-tag">
+                QUICK ACTIONS
+            </span>
+
+
+            <h2>
+                What would you like to do?
+            </h2>
+
+        </div>
+
+
+    </div>
+
+
+
+    <div class="quick-grid">
+
+
+        <!-- RESUME -->
+
+        <a href="/resume"
+           class="quick-card">
+
+
+            <div class="quick-icon">
+
+                <i class="fa-solid fa-file-circle-plus"></i>
+
+            </div>
+
+
+            <div>
+
+                <h3>
+                    Analyze Resume
+                </h3>
+
+
+                <p>
+                    Check ATS score & missing skills.
+                </p>
+
+            </div>
+
+
+            <i class="fa-solid fa-arrow-right arrow"></i>
+
+
+        </a>
+
+
+
+        <!-- CAREER -->
+
+        <a href="/career"
+           class="quick-card">
+
+
+            <div class="quick-icon">
+
+                <i class="fa-solid fa-compass"></i>
+
+            </div>
+
+
+            <div>
+
+                <h3>
+                    Career Guidance
+                </h3>
+
+
+                <p>
+                    Discover suitable career paths.
+                </p>
+
+            </div>
+
+
+            <i class="fa-solid fa-arrow-right arrow"></i>
+
+
+        </a>
+
+
+
+        <!-- SKILL GAP -->
+
+        <a href="/skill-gap"
+           class="quick-card">
+
+
+            <div class="quick-icon">
+
+                <i class="fa-solid fa-code"></i>
+
+            </div>
+
+
+            <div>
+
+                <h3>
+                    Skill Gap
+                </h3>
+
+
+                <p>
+                    Find skills you need to learn.
+                </p>
+
+            </div>
+
+
+            <i class="fa-solid fa-arrow-right arrow"></i>
+
+
+        </a>
+
+
+
+        <!-- INTERVIEW -->
+
+        <a href="/interview"
+           class="quick-card">
+
+
+            <div class="quick-icon">
+
+                <i class="fa-solid fa-microphone-lines"></i>
+
+            </div>
+
+
+            <div>
+
+                <h3>
+                    AI Mock Interview
+                </h3>
+
+
+                <p>
+                    Practice interview questions.
+                </p>
+
+            </div>
+
+
+            <i class="fa-solid fa-arrow-right arrow"></i>
+
+
+        </a>
+
+
+
+        <!-- JOBS -->
+
+        <a href="/jobs"
+           class="quick-card">
+
+
+            <div class="quick-icon">
+
+                <i class="fa-solid fa-briefcase"></i>
+
+            </div>
+
+
+            <div>
+
+                <h3>
+                    Find Jobs
+                </h3>
+
+
+                <p>
+                    Explore suitable job opportunities.
+                </p>
+
+            </div>
+
+
+            <i class="fa-solid fa-arrow-right arrow"></i>
+
+
+        </a>
+
+
+
+        <!-- PLACEMENT -->
+
+        <a href="/placement"
+           class="quick-card">
+
+
+            <div class="quick-icon">
+
+                <i class="fa-solid fa-chart-simple"></i>
+
+            </div>
+
+
+            <div>
+
+                <h3>
+                    Placement Prediction
+                </h3>
+
+
+                <p>
+                    Check your placement probability.
+                </p>
+
+            </div>
+
+
+            <i class="fa-solid fa-arrow-right arrow"></i>
+
+
+        </a>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =========================================
+     NEXT STEP
+========================================= -->
+
+<section class="next-section">
+
+
+    <div>
+
+        <span>
+            NEXT RECOMMENDED STEP
+        </span>
+
+
+        <h2>
+            Improve your resume with AI
+        </h2>
+
+
+        <p>
+            Upload your latest resume and discover
+            what you can improve before applying for jobs.
+        </p>
+
+    </div>
+
+
+
+    <a href="/resume"
+       class="next-btn">
+
+        Continue
+
+        <i class="fa-solid fa-arrow-right"></i>
+
+    </a>
+
+
+</section>
+
+
+
+<!-- =========================================
+     FOOTER
+========================================= -->
+
+<footer>
+
+
+    <p>
+        © 2026 AI Career Guidance & Placement Platform
+    </p>
+
+
+    <span>
+        Powered by AI • Built for Students 🚀
+    </span>
+
+
+</footer>
+
+
+
+</main>
+
+</div>
+
+
+
+<!-- =====================================================
+     AI CAREER ASSISTANT OVERLAY
+====================================================== -->
+
+<div class="ai-chat-overlay"
+     id="aiChatOverlay">
+
+
+    <!-- CHAT BOX -->
+
+    <div class="ai-chat-box">
+
+
+        <!-- =========================================
+             CHAT HEADER
+        ========================================== -->
+
+        <div class="ai-chat-header">
+
+
+            <div class="ai-chat-title">
+
+
+                <div class="ai-chat-icon">
+
+                    <i class="fa-solid fa-robot"></i>
+
+                </div>
+
+
+                <div>
+
+                    <h3>
+                        AI Career Assistant
+                    </h3>
+
+
+                    <span>
+
+                        <i class="fa-solid fa-circle"></i>
+
+                        Online
+
+                    </span>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- CLOSE -->
+
+            <button type="button"
+                    id="closeAiChat"
+                    title="Close">
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </button>
+
+
+        </div>
+
+
+
+        <!-- =========================================
+             CHAT MESSAGES
+        ========================================== -->
+
+        <div class="ai-chat-messages"
+             id="aiChatMessages">
+
+
+            <!-- INITIAL AI MESSAGE -->
+
+            <div class="ai-message">
+
+
+                <div class="message-avatar">
+
+                    <i class="fa-solid fa-robot"></i>
+
+                </div>
+
+
+                <div class="message-content">
+
+                    <strong>
+                        AI Career Assistant
+                    </strong>
+
+
+                    <p>
+                        Hi 👋 I'm your AI Career Assistant.
+                        Ask me anything about resumes, careers,
+                        skills, interviews or placements.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- =========================================
+             QUICK QUESTIONS
+        ========================================== -->
+
+        <div class="quick-questions">
+
+
+            <button type="button"
+                    class="quick-question">
+
+                How can I improve my resume?
+
+            </button>
+
+
+            <button type="button"
+                    class="quick-question">
+
+                Which skills should I learn?
+
+            </button>
+
+
+            <button type="button"
+                    class="quick-question">
+
+                How should I prepare for placements?
+
+            </button>
+
+
+        </div>
+
+
+
+        <!-- =========================================
+             INPUT
+        ========================================== -->
+
+        <div class="ai-chat-input">
+
+
+            <input
+                type="text"
+                id="aiMessageInput"
+                placeholder="Ask your career question..."
+                autocomplete="off">
+
+
+            <button type="button"
+                    id="sendAiMessage"
+                    title="Send">
+
+                <i class="fa-solid fa-paper-plane"></i>
+
+            </button>
+
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================================
+     DASHBOARD JAVASCRIPT
+========================================= -->
+
+<script src="{{ url_for('static', filename='dashboard.js') }}"></script>
+
+
+</body>
+
+</html>

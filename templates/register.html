@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register | AI Career Guidance Platform</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='register.css') }}">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+    <!-- Animated Background -->
+
+    <div class="background">
+
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+
+    </div>
+
+    <div class="container">
+
+        <!-- Left Section -->
+
+        <div class="left-section">
+
+            <div class="logo">
+
+                <i class="fa-solid fa-user-graduate"></i>
+
+                <h2>AI Career Guidance</h2>
+
+            </div>
+
+            <h1>Create Account</h1>
+
+            <p>
+
+                Register now and unlock AI-powered
+                career guidance, placement prediction,
+                resume analysis and interview preparation.
+
+            </p>
+
+            <img
+            src="{{ url_for('static', filename='images/register.png') }}"
+            class="illustration"
+            alt="Register">
+
+        </div>
+
+        <!-- Right Section -->
+
+        <div class="right-section">
+
+            <div class="register-card">
+
+                <h2>Register</h2>
+
+                <p>Create your new account</p>
+                {% if error %}
+<div class="error-message">
+    <i class="fa-solid fa-circle-exclamation"></i>
+    <span>{{ error }}</span>
+</div>
+{% endif %}
+
+                <form action="/register" method="POST">
+
+                    <!-- Full Name -->
+
+                    <div class="input-box">
+
+                        <i class="fa-solid fa-user"></i>
+
+                        <input
+                        type="text"
+                        name="fullname"
+                        placeholder="Full Name"
+                        required>
+
+                    </div>
+
+                    <!-- Email -->
+
+                    <div class="input-box">
+
+                        <i class="fa-solid fa-envelope"></i>
+
+                        <input
+                        type="email"
+                        name="email"
+                        placeholder="Email Address"
+                        required>
+
+                    </div>
+
+                    <!-- Phone -->
+
+                    <div class="input-box">
+
+                        <i class="fa-solid fa-phone"></i>
+
+                        <input
+                        type="text"
+                        name="phone"
+                        placeholder="Phone Number"
+                        required>
+
+                    </div>
+
+                    <!-- College -->
+
+                    <div class="input-box">
+
+                        <i class="fa-solid fa-building-columns"></i>
+
+                        <input
+                        type="text"
+                        name="college"
+                        placeholder="College Name"
+                        required>
+
+                    </div>
+
+                    <!-- Branch -->
+
+                    <div class="input-box">
+
+                        <i class="fa-solid fa-code-branch"></i>
+
+                        <input
+                        type="text"
+                        name="branch"
+                        placeholder="Branch"
+                        required>
+
+                    </div>
+
+                    <!-- CGPA -->
+
+                    <div class="input-box">
+
+                        <i class="fa-solid fa-chart-line"></i>
+
+                        <input
+                        type="text"
+                        name="cgpa"
+                        placeholder="CGPA"
+                        required>
+
+                    </div>
+
+                    <!-- Password -->
+
+                  <div class="input-box">
+
+    <span class="eye-icon" id="togglePassword">👁</span>
+
+    <input
+        type="password"
+        id="password"
+        name="password"
+        placeholder="Password"
+        required>
+
+</div>
+
+                    <!-- Confirm Password -->
+
+                  <div class="input-box">
+
+    <span class="eye-icon" id="toggleConfirm">👁</span>
+
+    <input
+        type="password"
+        id="confirmPassword"
+        name="confirmPassword"
+        placeholder="Confirm Password"
+        required>
+
+</div>
+
+                    <button
+                    type="submit"
+                    class="register-btn">
+
+                        Register
+
+                    </button>
+
+                </form>
+
+                <div class="divider">
+
+                    <span>OR</span>
+
+                </div>
+
+                <button class="google-btn">
+
+                    <img
+                    src="https://www.svgrepo.com/show/475656/google-color.svg"
+                    alt="Google">
+
+                    Continue with Google
+
+                </button>
+
+                <div class="login-link">
+
+                    Already have an account?
+
+                    <a href="/login">
+
+                        Login
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="{{ url_for('static', filename='register.js') }}"></script>
+
+</body>
+</html>

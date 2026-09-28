@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Resume Analyzer | AI Career Guidance
+    </title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='resume.css') }}">
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+     HEADER
+====================================================== -->
+
+    <header class="topbar">
+
+        <div class="brand">
+
+            <div class="brand-icon">
+
+                <i class="fa-solid fa-brain"></i>
+
+            </div>
+
+            <div>
+
+                <h2>
+                    AI Career Guidance
+                </h2>
+
+                <span>
+                Placement Platform
+            </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="top-actions">
+
+            <a href="{{ url_for('dashboard') }}" class="dashboard-link">
+
+                <i class="fa-solid fa-arrow-left"></i> Dashboard
+
+            </a>
+
+
+            <div class="user-mini">
+
+                <i class="fa-solid fa-circle-user"></i> {{ fullname or "Student" }}
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =====================================================
+     MAIN
+====================================================== -->
+
+    <main class="resume-page">
+
+
+        <!-- =================================================
+         PAGE INTRO
+    ================================================== -->
+
+        <section class="page-intro">
+
+            <div class="intro-icon">
+
+                <i class="fa-solid fa-file-circle-check"></i>
+
+            </div>
+
+
+            <div>
+
+                <p class="eyebrow">
+                    AI CAREER ANALYSIS
+                </p>
+
+                <h1>
+                    Resume Analyzer
+                </h1>
+
+                <p class="intro-text">
+
+                    Upload your resume and get a detailed analysis of your technical skills, resume structure, skill gaps and placement readiness.
+
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+         ALERTS
+    ================================================== -->
+
+        {% if success %}
+
+        <div class="alert success-alert">
+
+            <div class="alert-icon">
+
+                <i class="fa-solid fa-circle-check"></i>
+
+            </div>
+
+            <div>
+
+                <strong>
+                Analysis Complete
+            </strong>
+
+                <p>
+                    {{ success }}
+                </p>
+
+            </div>
+
+        </div>
+
+        {% endif %} {% if error %}
+
+        <div class="alert error-alert">
+
+            <div class="alert-icon">
+
+                <i class="fa-solid fa-circle-exclamation"></i>
+
+            </div>
+
+            <div>
+
+                <strong>
+                Resume Analysis Error
+            </strong>
+
+                <p>
+                    {{ error }}
+                </p>
+
+            </div>
+
+        </div>
+
+        {% endif %}
+
+
+
+        <!-- =================================================
+         UPLOAD CARD
+    ================================================== -->
+
+        <section class="upload-card">
+
+            <div class="card-title">
+
+                <div class="title-icon">
+
+                    <i class="fa-solid fa-cloud-arrow-up"></i>
+
+                </div>
+
+                <div>
+
+                    <h2>
+                        Upload Your Resume
+                    </h2>
+
+                    <p>
+                        PDF format only
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <form action="{{ url_for('resume') }}" method="POST" enctype="multipart/form-data" id="resumeForm">
+
+                <label for="resume" class="drop-zone" id="dropZone">
+
+                <div class="upload-icon">
+
+                    <i class="fa-solid fa-file-pdf"></i>
+
+                </div>
+
+
+                <h3>
+                    Choose your resume
+                </h3>
+
+
+                <p>
+                    Drag & drop your PDF here
+                    or click to browse
+                </p>
+
+
+                <span class="browse-text">
+                    Browse Resume
+                </span>
+
+
+                <input
+                    type="file"
+                    name="resume"
+                    id="resume"
+                    accept=".pdf,application/pdf"
+                    hidden
+                    required
+                >
+
+            </label>
+
+
+                <!-- FILE PREVIEW -->
+
+                <div class="selected-file" id="selectedFile" style="display:none;">
+
+                    <div class="selected-file-icon">
+
+                        <i class="fa-solid fa-file-pdf"></i>
+
+                    </div>
+
+
+                    <div class="selected-file-info">
+
+                        <strong id="fileName">
+                        Resume.pdf
+                    </strong>
+
+                        <span id="fileSize">
+                        0 KB
+                    </span>
+
+                    </div>
+
+
+                    <button type="button" id="removeFile" class="remove-file">
+
+                    <i class="fa-solid fa-xmark"></i>
+
+                </button>
+
+                </div>
+
+
+                <button type="submit" class="analyze-button" id="analyzeButton">
+
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+
+                <span id="buttonText">
+                    Analyze My Resume
+                </span>
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </button>
+
+            </form>
+
+
+            {% if existing_resume %}
+
+            <div class="previous-resume">
+
+                <div>
+
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+
+                    <span>
+                    Previous resume available
+                </span>
+
+                </div>
+
+
+                <a href="{{ url_for('resume_file', filename=existing_resume) }}" target="_blank">
+
+                    <i class="fa-solid fa-eye"></i> View Resume
+
+                </a>
+
+            </div>
+
+            {% endif %}
+
+        </section>
+
+
+
+        <!-- =================================================
+         LOADING
+    ================================================== -->
+
+        <div id="loadingBox" class="loading-box" style="display:none;">
+
+            <div class="loader"></div>
+
+            <h3>
+                Analyzing your resume...
+            </h3>
+
+            <p>
+                Reading your PDF and checking skills, projects, education and career readiness.
+            </p>
+
+        </div>
+
+
+
+        {% if result %}
+
+        <!-- =================================================
+         ANALYSIS HEADER
+    ================================================== -->
+
+        <section class="analysis-header">
+
+            <div>
+
+                <p class="eyebrow">
+                    AI ANALYSIS COMPLETE
+                </p>
+
+                <h2>
+                    Your Resume AI Report
+                </h2>
+
+                <p>
+                    Detailed analysis generated from your uploaded resume.
+                </p>
+
+            </div>
+
+
+            <div class="status-badge">
+
+                <i class="fa-solid fa-circle-check"></i> Analyzed
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+         SCORE CARDS
+    ================================================== -->
+
+        <section class="score-grid">
+            <div class="score-card main-score">
+
+                <div class="score-circle-wrap" style="--score: {{ result.score|default(0) }};">
+
+                    <div class="score-circle">
+
+                        <div class="score-value">
+                            <strong>{{ result.score|default(0) }}</strong>
+                            <small>/ 100</small>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="score-info">
+
+                    <p class="score-label">
+                        RESUME STRENGTH
+                    </p>
+
+                    <h3>
+                        {{ result.get("resume_status", "Resume Analyzed") }}
+                    </h3>
+
+                    <span>
+            Your resume shows strong professional readiness and
+            relevant career information.
+        </span>
+
+                    <div class="score-status">
+                        <i class="fa-solid fa-circle-check"></i> AI analysis completed
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- =====================================================
+     RESUME SCORE
+====================================================== -->
+
+            <div class="metric-card">
+
+                <div class="metric-icon">
+
+                    <i class="fa-solid fa-chart-line"></i>
+
+                </div>
+
+                <p>
+                    Placement Readiness
+                </p>
+
+                <strong>
+                {{ result.placement_chance }}%
+            </strong>
+
+                <div class="progress">
+
+                    <span style="width: {{ result.placement_chance }}%"></span>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="metric-card">
+
+                <div class="metric-icon">
+
+                    <i class="fa-solid fa-code"></i>
+
+                </div>
+
+                <p>
+                    Skill Score
+                </p>
+
+                <strong>
+                {{ result.skill_score }}%
+            </strong>
+
+                <div class="progress">
+
+                    <span style="width: {{ result.skill_score }}%"></span>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="metric-card">
+
+                <div class="metric-icon">
+
+                    <i class="fa-solid fa-layer-group"></i>
+
+                </div>
+
+                <p>
+                    Resume Structure
+                </p>
+
+                <strong>
+                {{ result.structure_score }}%
+            </strong>
+
+                <div class="progress">
+
+                    <span style="width: {{ result.structure_score }}%"></span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+         DETECTED SKILLS
+    ================================================== -->
+
+        <section class="analysis-card">
+
+            <div class="section-heading">
+
+                <div class="section-icon">
+
+                    <i class="fa-solid fa-code"></i>
+
+                </div>
+
+                <div>
+
+                    <h2>
+                        Detected Skills
+                    </h2>
+
+                    <p>
+                        Technical skills found in your resume
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="skill-list">
+
+                {% for skill in result.detected_skills %}
+
+                <span class="skill-chip">
+
+                    <i class="fa-solid fa-check"></i>
+
+                    {{ skill }}
+
+                </span> {% else %}
+
+                <div class="empty-state">
+
+                    <i class="fa-solid fa-circle-info"></i> No technical skills were detected.
+
+                </div>
+
+                {% endfor %}
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+         SKILL GAPS
+    ================================================== -->
+
+        <section class="analysis-card">
+
+            <div class="section-heading">
+
+                <div class="section-icon warning">
+
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+
+                </div>
+
+                <div>
+
+                    <h2>
+                        Skill Gaps
+                    </h2>
+
+                    <p>
+                        Placement-oriented skills that were not detected
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="skill-list">
+
+                {% for skill in result.missing_skills %}
+
+                <span class="missing-chip">
+
+                    <i class="fa-solid fa-plus"></i>
+
+                    {{ skill }}
+
+                </span> {% else %}
+
+                <div class="success-message">
+
+                    <i class="fa-solid fa-circle-check"></i> No major skill gaps detected.
+
+                </div>
+
+                {% endfor %}
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+         RESUME SECTIONS
+    ================================================== -->
+
+        <section class="analysis-card">
+
+            <div class="section-heading">
+
+                <div class="section-icon">
+
+                    <i class="fa-solid fa-list-check"></i>
+
+                </div>
+
+                <div>
+
+                    <h2>
+                        Resume Sections
+                    </h2>
+
+                    <p>
+                        Important sections detected in your resume
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="section-grid">
+
+                {% set section_names = { "summary": "Professional Summary", "education": "Education", "skills": "Skills", "projects": "Projects", "experience": "Experience", "internship": "Internship", "certifications": "Certifications", "achievements": "Achievements"
+                } %} {% for key, label in section_names.items() %}
+
+                <div class="section-status
+                    {% if result.sections[key] %}
+                        available
+                    {% else %}
+                        missing
+                    {% endif %}
+                ">
+
+                    {% if result.sections[key] %}
+
+                    <i class="fa-solid fa-circle-check"></i>
+
+                    <span>
+                            {{ label }}
+                        </span>
+
+                    <small>
+                            Found
+                        </small> {% else %}
+
+                    <i class="fa-solid fa-circle-xmark"></i>
+
+                    <span>
+                            {{ label }}
+                        </span>
+
+                    <small>
+                            Missing
+                        </small> {% endif %}
+
+                </div>
+
+                {% endfor %}
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+         CONTACT CHECK
+    ================================================== -->
+
+        <section class="analysis-card">
+
+            <div class="section-heading">
+
+                <div class="section-icon">
+
+                    <i class="fa-solid fa-address-card"></i>
+
+                </div>
+
+                <div>
+
+                    <h2>
+                        Professional Profile Check
+                    </h2>
+
+                    <p>
+                        Contact and professional profile information
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="profile-check-grid">
+
+
+                <div class="check-item">
+
+                    {% if result.email_found %}
+
+                    <i class="fa-solid fa-circle-check ok"></i>
+
+                    <span>
+                        Email
+                    </span>
+
+                    <small>
+                        Found
+                    </small> {% else %}
+
+                    <i class="fa-solid fa-circle-xmark bad"></i>
+
+                    <span>
+                        Email
+                    </span>
+
+                    <small>
+                        Missing
+                    </small> {% endif %}
+
+                </div>
+
+
+                <div class="check-item">
+
+                    {% if result.phone_found %}
+
+                    <i class="fa-solid fa-circle-check ok"></i>
+
+                    <span>
+                        Phone
+                    </span>
+
+                    <small>
+                        Found
+                    </small> {% else %}
+
+                    <i class="fa-solid fa-circle-xmark bad"></i>
+
+                    <span>
+                        Phone
+                    </span>
+
+                    <small>
+                        Missing
+                    </small> {% endif %}
+
+                </div>
+
+
+                <div class="check-item">
+
+                    {% if result.github_found %}
+
+                    <i class="fa-solid fa-circle-check ok"></i>
+
+                    <span>
+                        GitHub
+                    </span>
+
+                    <small>
+                        Found
+                    </small> {% else %}
+
+                    <i class="fa-solid fa-circle-xmark bad"></i>
+
+                    <span>
+                        GitHub
+                    </span>
+
+                    <small>
+                        Missing
+                    </small> {% endif %}
+
+                </div>
+
+
+                <div class="check-item">
+
+                    {% if result.linkedin_found %}
+
+                    <i class="fa-solid fa-circle-check ok"></i>
+
+                    <span>
+                        LinkedIn
+                    </span>
+
+                    <small>
+                        Found
+                    </small> {% else %}
+
+                    <i class="fa-solid fa-circle-xmark bad"></i>
+
+                    <span>
+                        LinkedIn
+                    </span>
+
+                    <small>
+                        Missing
+                    </small> {% endif %}
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+         STRENGTHS + IMPROVEMENTS
+    ================================================== -->
+
+        <section class="two-column">
+
+
+            <div class="analysis-card">
+
+                <div class="section-heading">
+
+                    <div class="section-icon success">
+
+                        <i class="fa-solid fa-star"></i>
+
+                    </div>
+
+                    <div>
+
+                        <h2>
+                            Resume Strengths
+                        </h2>
+
+                        <p>
+                            Positive areas detected
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <ul class="recommendation-list">
+
+                    {% for item in result.strengths %}
+
+                    <li>
+
+                        <i class="fa-solid fa-check"></i>
+
+                        <span>
+                            {{ item }}
+                        </span>
+
+                    </li>
+
+                    {% endfor %}
+
+                </ul>
+
+            </div>
+
+
+
+            <div class="analysis-card">
+
+                <div class="section-heading">
+
+                    <div class="section-icon warning">
+
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+
+                    </div>
+
+                    <div>
+
+                        <h2>
+                            Areas To Improve
+                        </h2>
+
+                        <p>
+                            Recommendations to strengthen your resume
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <ul class="recommendation-list">
+
+                    {% for item in result.improvements %}
+
+                    <li>
+
+                        <i class="fa-solid fa-arrow-up"></i>
+
+                        <span>
+                            {{ item }}
+                        </span>
+
+                    </li>
+
+                    {% endfor %}
+
+                </ul>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+         CAREER SUGGESTIONS
+    ================================================== -->
+
+        <section class="analysis-card suggestions-card">
+
+            <div class="section-heading">
+
+                <div class="section-icon">
+
+                    <i class="fa-solid fa-lightbulb"></i>
+
+                </div>
+
+                <div>
+
+                    <h2>
+                        Career Suggestions
+                    </h2>
+
+                    <p>
+                        Recommendations based on your resume
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="suggestion-list">
+
+                {% for item in result.suggestions %}
+
+                <div class="suggestion-item">
+
+                    <div class="suggestion-number">
+
+                        {{ loop.index }}
+
+                    </div>
+
+                    <p>
+                        {{ item }}
+                    </p>
+
+                </div>
+
+                {% endfor %}
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+         ACTIONS
+    ================================================== -->
+
+        <section class="next-actions">
+
+            <a href="{{ url_for('career') }}" class="action-button primary">
+
+                <i class="fa-solid fa-compass"></i> Explore Career
+
+            </a>
+
+
+            <a href="{{ url_for('skill_gap') }}" class="action-button secondary">
+
+                <i class="fa-solid fa-code"></i> Skill Gap Analysis
+
+            </a>
+
+
+            <a href="{{ url_for('placement') }}" class="action-button secondary">
+
+                <i class="fa-solid fa-chart-line"></i> Placement Prediction
+
+            </a>
+
+        </section>
+
+        {% endif %}
+
+    </main>
+
+
+
+    <script src="{{ url_for('static', filename='resume.js') }}"></script>
+
+
+</body>
+
+</html>

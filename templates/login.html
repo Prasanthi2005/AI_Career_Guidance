@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | AI Career Guidance Platform</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+    <!-- Animated Background -->
+    <div class="background">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <div class="container">
+
+        <!-- Left Section -->
+        <div class="left-section">
+
+            <div class="logo">
+                <i class="fa-solid fa-brain"></i>
+                <h2>AI Career Guidance</h2>
+            </div>
+
+            <h1>Welcome Back!</h1>
+
+            <p>
+                Sign in to continue your journey toward
+                your dream career with AI-powered guidance.
+            </p>
+
+            <img
+                src="{{ url_for('static', filename='images/login.png') }}"
+                alt="AI Illustration"
+                class="illustration">
+
+        </div>
+
+        <!-- Right Section -->
+        <div class="right-section">
+
+            <div class="glass-card">
+
+                <h2>Login</h2>
+
+                <p>
+                    Please login to your account
+                </p>
+
+                <form action="/login" method="POST">
+
+                    <!-- Email -->
+
+                    <div class="input-box">
+
+                        <i class="fa-solid fa-envelope"></i>
+
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="Enter your Email"
+                            required
+                            autocomplete="email">
+
+                    </div>
+
+                    <!-- Password -->
+
+                    <div class="input-box">
+
+                        <i
+                            class="fa-solid fa-eye"
+                            id="togglePassword">
+                        </i>
+
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            placeholder="Enter your Password"
+                            required>
+
+                    </div>
+
+                    <!-- Remember -->
+
+                    <div class="options">
+
+                        <label>
+
+                            <input type="checkbox">
+
+                            Remember Me
+
+                        </label>
+
+                        <a href="/forgot-password">
+                            Forgot Password?
+                        </a>
+
+                    </div>
+
+                    <!-- Button -->
+
+                    <button
+                        type="submit"
+                        class="login-btn">
+
+                        Login
+
+                    </button>
+
+                </form>
+
+                <!-- Divider -->
+
+                <div class="divider">
+                    <span>OR</span>
+                </div>
+
+                <!-- Google -->
+
+                <button
+    type="button"
+    class="google-btn"
+    onclick="window.location.href='/login/google'">
+
+    <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google">
+
+    Continue with Google
+</button>
+                <!-- Register -->
+
+                <div class="register-link">
+
+                    Don't have an account?
+
+                    <a href="/register">
+
+                        Register
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="{{ url_for('static', filename='login.js') }}"></script>
+
+</body>
+</html>

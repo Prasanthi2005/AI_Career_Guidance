@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Skill Gap Analysis | AI Career Guidance</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Skill Gap CSS -->
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='skill_gap.css') }}">
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================
+     Animated Background
+========================================= -->
+
+<div class="background">
+
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+
+</div>
+
+
+<!-- =========================================
+     Header
+========================================= -->
+
+<header class="dashboard-header">
+
+    <div class="brand">
+
+        <span class="brand-ai">AI</span>
+
+        Career Guidance & Placement Platform
+
+    </div>
+
+
+    <div class="user-profile">
+
+        <i class="fa-solid fa-circle-user"></i>
+
+        <span>
+            Welcome, {{ fullname }}
+        </span>
+
+    </div>
+
+</header>
+
+
+
+{% if not resume_uploaded %}
+
+
+<!-- =========================================
+     Resume Required
+========================================= -->
+
+<section class="resume-required">
+
+    <div class="required-icon">
+
+        <i class="fa-solid fa-file-circle-exclamation"></i>
+
+    </div>
+
+    <h1>Resume Analysis Required</h1>
+
+    <p>
+        Please upload and analyze your resume first.
+        Your personalized skill gap will be generated
+        from your resume and recommended career.
+    </p>
+
+    <a href="{{ url_for('resume') }}"
+       class="primary-btn">
+
+        <i class="fa-solid fa-file-arrow-up"></i>
+
+        Analyze My Resume
+
+    </a>
+
+</section>
+
+
+{% else %}
+
+
+<!-- =========================================
+     Main Container
+========================================= -->
+
+<main class="skill-container">
+
+
+    <!-- =====================================
+         Page Heading
+    ====================================== -->
+
+    <section class="hero-section">
+
+        <div class="hero-icon">
+
+            <i class="fa-solid fa-chart-simple"></i>
+
+        </div>
+
+
+        <div>
+
+            <span class="small-heading">
+                PERSONALIZED CAREER ANALYSIS
+            </span>
+
+            <h1>
+                Skill Gap Analysis
+            </h1>
+
+            <p>
+                Understand your current skills and discover
+                what you need to learn for your target career.
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================
+         Target Career
+    ====================================== -->
+
+    <section class="target-career">
+
+        <div class="target-left">
+
+            <div class="target-icon">
+
+                <i class="fa-solid fa-bullseye"></i>
+
+            </div>
+
+            <div>
+
+                <span>
+                    YOUR AI-RECOMMENDED CAREER
+                </span>
+
+                <h2>
+                    {{ recommended_career }}
+                </h2>
+
+                <p>
+                    Your skill development plan is personalized
+                    for this career path.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="career-badge">
+
+            <i class="fa-solid fa-sparkles"></i>
+
+            AI MATCH
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================
+         Readiness Statistics
+    ====================================== -->
+
+    <section class="stats-grid">
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon blue">
+
+                <i class="fa-solid fa-chart-pie"></i>
+
+            </div>
+
+            <div>
+
+                <span>CAREER READINESS</span>
+
+                <h2>
+                    {{ readiness }}%
+                </h2>
+
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon green">
+
+                <i class="fa-solid fa-circle-check"></i>
+
+            </div>
+
+            <div>
+
+                <span>SKILLS MATCHED</span>
+
+                <h2>
+                    {{ current_skills|length }}
+                </h2>
+
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon orange">
+
+                <i class="fa-solid fa-triangle-exclamation"></i>
+
+            </div>
+
+            <div>
+
+                <span>SKILLS TO LEARN</span>
+
+                <h2>
+                    {{ missing_skills|length }}
+                </h2>
+
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon purple">
+
+                <i class="fa-solid fa-layer-group"></i>
+
+            </div>
+
+            <div>
+
+                <span>REQUIRED SKILLS</span>
+
+                <h2>
+                    {{ required_skills|length }}
+                </h2>
+
+            </div>
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =====================================
+         Career Readiness
+    ====================================== -->
+
+    <section class="readiness-card">
+
+        <div class="readiness-header">
+
+            <div>
+
+                <span>
+                    CAREER READINESS SCORE
+                </span>
+
+                <h2>
+                    You're
+                    <strong>{{ readiness }}%</strong>
+                    ready
+                </h2>
+
+            </div>
+
+
+            <div class="score-circle"
+                 data-score="{{ readiness }}">
+
+                <span>
+                    {{ readiness }}%
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="progress-area">
+
+            <div class="progress-track">
+
+                <div class="progress-fill"
+                     data-width="{{ readiness }}%">
+                </div>
+
+            </div>
+
+            <div class="progress-labels">
+
+                <span>
+                    Beginner
+                </span>
+
+                <span>
+                    Career Ready
+                </span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================
+         Current Skills
+    ====================================== -->
+
+    <section class="content-card">
+
+        <div class="section-heading">
+
+            <div class="heading-icon success">
+
+                <i class="fa-solid fa-circle-check"></i>
+
+            </div>
+
+            <div>
+
+                <h2>
+                    Skills You Already Have
+                </h2>
+
+                <p>
+                    Skills detected from your resume
+                </p>
+
+            </div>
+
+        </div>
+
+
+        {% if current_skills %}
+
+        <div class="skill-tags">
+
+            {% for skill in current_skills %}
+
+            <div class="skill-tag">
+
+                <i class="fa-solid fa-check"></i>
+
+                {{ skill }}
+
+                <span>
+                    Matched
+                </span>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+        {% else %}
+
+        <div class="empty-state">
+
+            No required skills matched yet.
+
+        </div>
+
+        {% endif %}
+
+    </section>
+
+
+
+    <!-- =====================================
+         Skill Gaps
+    ====================================== -->
+
+    <section class="content-card">
+
+        <div class="section-heading">
+
+            <div class="heading-icon warning">
+
+                <i class="fa-solid fa-bolt"></i>
+
+            </div>
+
+            <div>
+
+                <h2>
+                    Your Skill Gaps
+                </h2>
+
+                <p>
+                    Skills you should develop for
+                    {{ recommended_career }}
+                </p>
+
+            </div>
+
+        </div>
+
+
+        {% if missing_skills %}
+
+
+        <div class="gap-list">
+
+
+            {% for skill in high_priority %}
+
+            <div class="gap-item high">
+
+                <div class="gap-number">
+                    {{ loop.index }}
+                </div>
+
+                <div class="gap-info">
+
+                    <h3>
+                        {{ skill }}
+                    </h3>
+
+                    <span>
+                        High Priority
+                    </span>
+
+                </div>
+
+                <div class="gap-action">
+
+                    <i class="fa-solid fa-arrow-up"></i>
+
+                </div>
+
+            </div>
+
+            {% endfor %}
+
+
+            {% for skill in medium_priority %}
+
+            <div class="gap-item medium">
+
+                <div class="gap-number">
+                    {{ loop.index + high_priority|length }}
+                </div>
+
+                <div class="gap-info">
+
+                    <h3>
+                        {{ skill }}
+                    </h3>
+
+                    <span>
+                        Medium Priority
+                    </span>
+
+                </div>
+
+                <div class="gap-action">
+
+                    <i class="fa-solid fa-minus"></i>
+
+                </div>
+
+            </div>
+
+            {% endfor %}
+
+
+            {% for skill in low_priority %}
+
+            <div class="gap-item low">
+
+                <div class="gap-number">
+                    {{ loop.index + high_priority|length + medium_priority|length }}
+                </div>
+
+                <div class="gap-info">
+
+                    <h3>
+                        {{ skill }}
+                    </h3>
+
+                    <span>
+                        Recommended
+                    </span>
+
+                </div>
+
+                <div class="gap-action">
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </div>
+
+            </div>
+
+            {% endfor %}
+
+
+        </div>
+
+
+        {% else %}
+
+        <div class="success-state">
+
+            <i class="fa-solid fa-circle-check"></i>
+
+            <h3>
+                Excellent!
+            </h3>
+
+            <p>
+                You already have the major skills required
+                for your recommended career.
+            </p>
+
+        </div>
+
+        {% endif %}
+
+    </section>
+
+
+
+    <!-- =====================================
+         Learning Roadmap
+    ====================================== -->
+
+    <section class="content-card roadmap-card">
+
+        <div class="section-heading">
+
+            <div class="heading-icon roadmap">
+
+                <i class="fa-solid fa-route"></i>
+
+            </div>
+
+            <div>
+
+                <h2>
+                    Personalized Learning Roadmap
+                </h2>
+
+                <p>
+                    Follow these steps to become
+                    career ready.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="roadmap">
+
+
+            {% for skill in missing_skills %}
+
+            <div class="roadmap-step">
+
+                <div class="step-number">
+
+                    {{ loop.index }}
+
+                </div>
+
+
+                <div class="step-line"></div>
+
+
+                <div class="step-content">
+
+                    <span>
+                        STEP {{ loop.index }}
+                    </span>
+
+                    <h3>
+                        Learn {{ skill }}
+                    </h3>
+
+                    <p>
+                        Build practical knowledge and
+                        add this skill to your projects.
+                    </p>
+
+                </div>
+
+
+                <a class="learn-btn"
+   href="{{ url_for('learning') }}?skill={{ skill|urlencode }}">
+
+    Start Learning
+
+    <i class="fa-solid fa-arrow-right"></i>
+
+</a>
+
+            </div>
+
+            {% endfor %}
+
+
+            <div class="roadmap-step final-step">
+
+                <div class="step-number">
+
+                    <i class="fa-solid fa-flag-checkered"></i>
+
+                </div>
+
+
+                <div class="step-content">
+
+                    <span>
+                        FINAL STEP
+                    </span>
+
+                    <h3>
+                        Build Real Projects
+                    </h3>
+
+                    <p>
+                        Apply your skills and create
+                        placement-ready projects.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================
+         Recommended Projects
+    ====================================== -->
+
+    <section class="content-card">
+
+        <div class="section-heading">
+
+            <div class="heading-icon project">
+
+                <i class="fa-solid fa-lightbulb"></i>
+
+            </div>
+
+            <div>
+
+                <h2>
+                    Recommended Projects
+                </h2>
+
+                <p>
+                    Practice your missing skills through
+                    real-world projects.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="project-grid">
+
+
+            <div class="project-card">
+
+                <div class="project-icon">
+
+                    <i class="fa-solid fa-cart-shopping"></i>
+
+                </div>
+
+                <h3>
+                    E-Commerce Website
+                </h3>
+
+                <p>
+                    Build a complete shopping platform
+                    using your frontend skills.
+                </p>
+
+                <div class="project-skills">
+
+                    <span>HTML</span>
+                    <span>CSS</span>
+                    <span>JavaScript</span>
+
+                </div>
+
+            </div>
+
+
+            <div class="project-card">
+
+                <div class="project-icon">
+
+                    <i class="fa-solid fa-briefcase"></i>
+
+                </div>
+
+                <h3>
+                    Job Portal
+                </h3>
+
+                <p>
+                    Create a placement-focused job portal
+                    with search and filtering.
+                </p>
+
+                <div class="project-skills">
+
+                    <span>API</span>
+                    <span>Git</span>
+                    <span>Database</span>
+
+                </div>
+
+            </div>
+
+
+            <div class="project-card">
+
+                <div class="project-icon">
+
+                    <i class="fa-solid fa-chart-line"></i>
+
+                </div>
+
+                <h3>
+                    Career Dashboard
+                </h3>
+
+                <p>
+                    Build a dashboard showing skills,
+                    progress and placement insights.
+                </p>
+
+                <div class="project-skills">
+
+                    <span>JavaScript</span>
+                    <span>Charts</span>
+                    <span>API</span>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================
+         Next Steps
+    ====================================== -->
+
+    <section class="next-section">
+
+        <div>
+
+            <span>
+                NEXT STEP
+            </span>
+
+            <h2>
+                Ready to test your placement readiness?
+            </h2>
+
+            <p>
+                Continue your personalized career journey.
+            </p>
+
+        </div>
+
+
+        <div class="next-buttons">
+
+            <a href="{{ url_for('placement') }}"
+               class="next-btn primary">
+
+                <i class="fa-solid fa-chart-column"></i>
+
+                Placement Prediction
+
+            </a>
+
+
+            <a href="{{ url_for('interview') }}"
+               class="next-btn">
+
+                <i class="fa-solid fa-user-tie"></i>
+
+                AI Mock Interview
+
+            </a>
+
+
+            <a href="{{ url_for('jobs') }}"
+               class="next-btn">
+
+                <i class="fa-solid fa-briefcase"></i>
+
+                Explore Jobs
+
+            </a>
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+{% endif %}
+
+
+
+<script src="{{ url_for('static', filename='skill_gap.js') }}"></script>
+
+</body>
+
+</html>

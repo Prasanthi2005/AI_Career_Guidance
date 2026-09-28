@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        AI Job Recommendations | AI Career Guidance
+    </title>
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='jobs.css') }}">
+
+</head>
+
+<body>
+
+<header class="dashboard-header">
+
+    <div class="brand">
+
+        <span>AI</span>
+        Career Guidance & Placement Platform
+
+    </div>
+
+    <div class="user-profile">
+
+        <i class="fa-solid fa-circle-user"></i>
+
+        <span>
+            Welcome, {{ fullname }}
+        </span>
+
+    </div>
+
+</header>
+
+
+<main class="jobs-container">
+
+
+    <!-- HERO -->
+
+    <section class="jobs-hero">
+
+        <div class="hero-icon">
+
+            <i class="fa-solid fa-briefcase"></i>
+
+        </div>
+
+        <div>
+
+            <span class="eyebrow">
+                AI POWERED JOB DISCOVERY
+            </span>
+
+            <h1>
+                Find Your Next Opportunity
+            </h1>
+
+            <p>
+                Live job recommendations matched with
+                your target career and resume skills.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- TARGET CAREER -->
+
+    <section class="target-panel">
+
+        <div class="target-left">
+
+            <div class="target-icon">
+
+                <i class="fa-solid fa-bullseye"></i>
+
+            </div>
+
+            <div>
+
+                <span>
+                    YOUR TARGET CAREER
+                </span>
+
+                <h2>
+                    {{ target_career }}
+                </h2>
+
+            </div>
+
+        </div>
+
+
+        <div class="job-count">
+
+            <strong>
+                {{ total_jobs }}
+            </strong>
+
+            <span>
+                Jobs Found
+            </span>
+
+        </div>
+
+    </section>
+
+
+    <!-- SEARCH -->
+
+    <section class="search-panel">
+
+        <form method="GET"
+              action="{{ url_for('jobs') }}">
+
+            <div class="search-field">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                <input
+                    type="text"
+                    name="keyword"
+                    value="{{ request.args.get('keyword', '') }}"
+                    placeholder="Search job title, skills...">
+
+            </div>
+
+
+            <div class="search-field">
+
+                <i class="fa-solid fa-location-dot"></i>
+
+                <input
+                    type="text"
+                    name="location"
+                    value="{{ location }}"
+                    placeholder="Location">
+
+            </div>
+
+
+            <button class="search-btn"
+                    type="submit">
+
+                <i class="fa-solid fa-search"></i>
+
+                Search Jobs
+
+            </button>
+
+        </form>
+
+    </section>
+
+
+    <!-- STATUS -->
+
+    {% if api_error %}
+
+    <div class="error-card">
+
+        <i class="fa-solid fa-triangle-exclamation"></i>
+
+        <div>
+
+            <h3>
+                Unable to load live jobs
+            </h3>
+
+            <p>
+                Please check your job API configuration
+                and try again.
+            </p>
+
+        </div>
+
+    </div>
+
+    {% endif %}
+
+
+    {% if not jobs and not api_error %}
+
+    <div class="empty-state">
+
+        <i class="fa-solid fa-magnifying-glass-chart"></i>
+
+        <h2>
+            No matching jobs found
+        </h2>
+
+        <p>
+            Try another keyword or location.
+        </p>
+
+    </div>
+
+    {% endif %}
+
+
+    <!-- JOB GRID -->
+
+    <section class="jobs-grid">
+
+        {% for job in jobs %}
+
+        <article class="job-card"
+                 data-match="{{ job.match }}">
+
+            <!-- CARD TOP -->
+
+            <div class="job-top">
+
+                <div class="company-logo">
+
+                    {{ job.company[:1]|upper }}
+
+                </div>
+
+                <button
+                    class="save-job"
+                    type="button"
+                    data-job-id="{{ job.id }}"
+                    title="Save Job">
+
+                    <i class="fa-regular fa-heart"></i>
+
+                </button>
+
+            </div>
+
+
+            <!-- TITLE -->
+
+            <div class="job-main">
+
+                <span class="live-badge">
+
+                    <i class="fa-solid fa-circle"></i>
+
+                    LIVE LISTING
+
+                </span>
+
+                <h2>
+                    {{ job.title }}
+                </h2>
+
+                <h3>
+                    {{ job.company }}
+                </h3>
+
+            </div>
+
+
+            <!-- META -->
+
+            <div class="job-meta">
+
+                <span>
+
+                    <i class="fa-solid fa-location-dot"></i>
+
+                    {{ job.location }}
+
+                </span>
+
+
+                <span>
+
+                    <i class="fa-solid fa-clock"></i>
+
+                    {{ job.contract_time }}
+
+                </span>
+
+
+                <span>
+
+                    <i class="fa-solid fa-file-contract"></i>
+
+                    {{ job.contract_type }}
+
+                </span>
+
+            </div>
+
+
+            <!-- SALARY -->
+
+            <div class="salary">
+
+                <i class="fa-solid fa-indian-rupee-sign"></i>
+
+                {{ job.salary }}
+
+            </div>
+
+
+            <!-- MATCH -->
+
+            <div class="match-section">
+
+                <div class="match-header">
+
+                    <span>
+                        AI SKILL MATCH
+                    </span>
+
+                    <strong>
+                        {{ job.match }}%
+                    </strong>
+
+                </div>
+
+                <div class="match-bar">
+
+                    <span style="width: {{ job.match }}%;">
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- SKILLS -->
+
+            <div class="skills-area">
+
+                {% for skill in job.matched_skills[:5] %}
+
+                    <span class="skill matched">
+
+                        <i class="fa-solid fa-check"></i>
+
+                        {{ skill }}
+
+                    </span>
+
+                {% endfor %}
+
+            </div>
+
+
+            <!-- ACTIONS -->
+
+            <div class="job-actions">
+
+                <button
+                    type="button"
+                    class="details-btn"
+                    data-job-id="{{ job.id }}">
+
+                    <i class="fa-solid fa-eye"></i>
+
+                    View Details
+
+                </button>
+
+
+                <a
+                    href="{{ job.url }}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="apply-btn">
+
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+
+                    Apply Now
+
+                </a>
+
+            </div>
+
+
+            <!-- HIDDEN DETAILS -->
+
+            <div class="job-data"
+                 hidden>
+
+                <div class="description">
+                    {{ job.description }}
+                </div>
+
+                <div class="company">
+                    {{ job.company }}
+                </div>
+
+                <div class="title">
+                    {{ job.title }}
+                </div>
+
+                <div class="location">
+                    {{ job.location }}
+                </div>
+
+                <div class="salary">
+                    {{ job.salary }}
+                </div>
+
+                <div class="url">
+                    {{ job.url }}
+                </div>
+
+            </div>
+
+        </article>
+
+        {% endfor %}
+
+    </section>
+
+
+    <!-- SOURCE -->
+
+    <footer class="jobs-source">
+
+        <i class="fa-solid fa-circle-info"></i>
+
+        Job listings are provided through a live external
+        job-data service. Application is completed on the
+        original job listing website.
+
+    </footer>
+
+
+</main>
+
+
+<!-- JOB DETAILS MODAL -->
+
+<div class="modal"
+     id="jobModal">
+
+    <div class="modal-overlay"></div>
+
+    <div class="modal-box">
+
+        <button
+            class="modal-close"
+            id="modalClose">
+
+            <i class="fa-solid fa-xmark"></i>
+
+        </button>
+
+
+        <div class="modal-company"
+             id="modalCompany">
+        </div>
+
+
+        <h2 id="modalTitle">
+        </h2>
+
+
+        <div class="modal-meta">
+
+            <span id="modalLocation">
+            </span>
+
+            <span id="modalSalary">
+            </span>
+
+        </div>
+
+
+        <div class="modal-description"
+             id="modalDescription">
+        </div>
+
+
+        <a
+            id="modalApply"
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="modal-apply">
+
+            <i class="fa-solid fa-paper-plane"></i>
+
+            Continue to Original Application
+
+        </a>
+
+    </div>
+
+</div>
+
+
+<script src="{{ url_for('static', filename='jobs.js') }}">
+</script>
+
+</body>
+
+</html>

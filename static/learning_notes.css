@@ -1,0 +1,658 @@
+/* =========================================
+   GLOBAL
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+
+    background:
+        radial-gradient(
+            circle at top right,
+            rgba(0, 234, 255, 0.08),
+            transparent 35%
+        ),
+        #061a3d;
+
+    color: #ffffff;
+
+    min-height: 100vh;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.notes-header {
+
+    height: 95px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 0 8%;
+
+    background: #061637;
+
+    border-bottom:
+        1px solid rgba(0, 234, 255, 0.12);
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 100;
+}
+
+
+.brand {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    font-size: 25px;
+
+    font-weight: 700;
+}
+
+
+.brand-ai {
+
+    color: #00eaff;
+
+    font-weight: 800;
+}
+
+
+.back-btn {
+
+    text-decoration: none;
+
+    color: #ffffff;
+
+    border:
+        1px solid #00aeea;
+
+    padding: 12px 20px;
+
+    border-radius: 12px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    transition: 0.3s;
+}
+
+
+.back-btn:hover {
+
+    background: #00aeea;
+
+    color: #061a3d;
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================================
+   MAIN
+========================================= */
+
+.notes-container {
+
+    width: 90%;
+
+    max-width: 1100px;
+
+    margin: auto;
+
+    padding: 50px 0 80px;
+}
+
+
+/* =========================================
+   HERO
+========================================= */
+
+.notes-hero {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 25px;
+
+    padding: 35px;
+
+    margin-bottom: 30px;
+
+    border-radius: 22px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #123b6d,
+            #102d56
+        );
+
+    border:
+        1px solid rgba(0, 234, 255, 0.25);
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.2);
+}
+
+
+.hero-icon {
+
+    width: 75px;
+
+    height: 75px;
+
+    border-radius: 20px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background:
+        rgba(0, 234, 255, 0.12);
+
+    color: #00eaff;
+
+    font-size: 34px;
+}
+
+
+.hero-label {
+
+    color: #00eaff;
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+}
+
+
+.notes-hero h1 {
+
+    font-size: 38px;
+
+    margin: 6px 0 8px;
+}
+
+
+.notes-hero p {
+
+    color: #9fb4d1;
+
+    font-size: 16px;
+}
+
+
+/* =========================================
+   SEARCH
+========================================= */
+
+.search-box {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    background: #102c55;
+
+    border:
+        1px solid rgba(0, 234, 255, 0.2);
+
+    border-radius: 14px;
+
+    padding: 15px 20px;
+
+    margin-bottom: 30px;
+}
+
+
+.search-box i {
+
+    color: #00eaff;
+
+    font-size: 18px;
+}
+
+
+.search-box input {
+
+    width: 100%;
+
+    background: transparent;
+
+    border: none;
+
+    outline: none;
+
+    color: #ffffff;
+
+    font-size: 16px;
+}
+
+
+.search-box input::placeholder {
+
+    color: #8199b9;
+}
+
+
+/* =========================================
+   NOTE CARD
+========================================= */
+
+.note-card {
+
+    display: flex;
+
+    gap: 25px;
+
+    padding: 30px;
+
+    margin-bottom: 20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #112f5a,
+            #10294d
+        );
+
+    border:
+        1px solid rgba(0, 234, 255, 0.18);
+
+    border-radius: 20px;
+
+    transition:
+        transform 0.3s,
+        border-color 0.3s,
+        box-shadow 0.3s;
+}
+
+
+.note-card:hover {
+
+    transform: translateY(-4px);
+
+    border-color: #00bde9;
+
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.25);
+}
+
+
+.note-number {
+
+    min-width: 55px;
+
+    height: 55px;
+
+    border-radius: 16px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background:
+        rgba(0, 234, 255, 0.12);
+
+    color: #00eaff;
+
+    font-weight: 800;
+
+    font-size: 15px;
+}
+
+
+.note-content {
+
+    flex: 1;
+}
+
+
+.note-content h2 {
+
+    font-size: 23px;
+
+    margin-bottom: 12px;
+}
+
+
+.note-content h3 {
+
+    margin-top: 20px;
+
+    margin-bottom: 10px;
+
+    color: #00eaff;
+}
+
+
+.note-content p {
+
+    color: #a9bad2;
+
+    line-height: 1.7;
+
+    margin-bottom: 12px;
+}
+
+
+.note-content ul,
+.note-content ol {
+
+    padding-left: 25px;
+
+    color: #b7c7dd;
+
+    line-height: 2;
+}
+
+
+/* =========================================
+   CONCEPT BOX
+========================================= */
+
+.concept-box {
+
+    margin-top: 18px;
+
+    padding: 18px;
+
+    border-left:
+        4px solid #00eaff;
+
+    background:
+        rgba(0, 234, 255, 0.06);
+
+    border-radius: 8px;
+}
+
+
+.concept-box strong {
+
+    color: #00eaff;
+
+    display: block;
+
+    margin-bottom: 7px;
+}
+
+
+.concept-box p {
+
+    margin: 0;
+}
+
+
+/* =========================================
+   CODE
+========================================= */
+
+.code-box {
+
+    margin: 18px 0;
+
+    padding: 18px;
+
+    border-radius: 12px;
+
+    background: #06152f;
+
+    overflow-x: auto;
+
+    border:
+        1px solid rgba(255,255,255,0.08);
+}
+
+
+.code-box pre {
+
+    color: #00eaff;
+
+    font-family: Consolas, monospace;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================
+   COMPLEXITY
+========================================= */
+
+.complexity-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 12px;
+
+    margin-top: 20px;
+}
+
+
+.complexity-grid div {
+
+    background:
+        rgba(0, 234, 255, 0.06);
+
+    border:
+        1px solid rgba(0, 234, 255, 0.12);
+
+    padding: 18px;
+
+    border-radius: 12px;
+
+    text-align: center;
+}
+
+
+.complexity-grid strong {
+
+    display: block;
+
+    color: #00eaff;
+
+    font-size: 18px;
+
+    margin-bottom: 7px;
+}
+
+
+.complexity-grid span {
+
+    color: #8ea7c7;
+
+    font-size: 13px;
+}
+
+
+/* =========================================
+   INTERVIEW CARD
+========================================= */
+
+.interview-card {
+
+    border-color:
+        rgba(164, 102, 255, 0.35);
+}
+
+
+.interview-card .note-number {
+
+    background:
+        rgba(164, 102, 255, 0.15);
+
+    color: #b783ff;
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.notes-footer {
+
+    display: flex;
+
+    justify-content: center;
+
+    margin-top: 35px;
+}
+
+
+.continue-btn {
+
+    text-decoration: none;
+
+    color: #061a3d;
+
+    background: #00dffc;
+
+    padding: 14px 25px;
+
+    border-radius: 12px;
+
+    font-weight: 700;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    transition: 0.3s;
+}
+
+
+.continue-btn:hover {
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 10px 25px rgba(0, 234, 255, 0.25);
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 768px) {
+
+    .notes-header {
+
+        padding: 0 5%;
+
+    }
+
+    .brand {
+
+        font-size: 18px;
+
+    }
+
+    .notes-hero {
+
+        padding: 25px;
+
+    }
+
+    .notes-hero h1 {
+
+        font-size: 28px;
+
+    }
+
+    .note-card {
+
+        padding: 22px;
+
+    }
+
+    .complexity-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+    }
+
+}
+
+
+@media (max-width: 500px) {
+
+    .notes-header {
+
+        height: auto;
+
+        padding: 20px;
+
+        gap: 15px;
+
+        flex-direction: column;
+
+    }
+
+    .notes-container {
+
+        width: 94%;
+
+    }
+
+    .notes-hero {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+    }
+
+    .note-card {
+
+        flex-direction: column;
+
+    }
+
+    .complexity-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+}

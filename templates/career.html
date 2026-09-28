@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Career Recommendation | AI Career Guidance</title>
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='career.css') }}">
+
+</head>
+
+<body>
+
+<header class="dashboard-header">
+
+    <h2>
+        AI Career Guidance & Placement Platform
+    </h2>
+
+    <div class="user-profile">
+
+        <i class="fa-solid fa-user-circle"></i>
+
+        <span>
+            Welcome, {{ fullname }}
+        </span>
+
+    </div>
+
+</header>
+
+<div id="careerPage"
+     class="career-container"
+     data-user-skills='{{ detected_skills|tojson }}'>
+
+    <!-- ================================= -->
+    <!-- PAGE HEADING -->
+    <!-- ================================= -->
+
+    <div class="page-heading">
+
+        <i class="fa-solid fa-compass"></i>
+
+        <div>
+
+            <h1>
+                AI Career Recommendation
+            </h1>
+
+            <p>
+                Discover the career path that best matches your resume,
+                skills and career profile.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    {% if not resume_uploaded %}
+
+        <div class="warning-card">
+
+            <i class="fa-solid fa-file-circle-exclamation"></i>
+
+            <h2>
+                Resume Analysis Required
+            </h2>
+
+            <p>
+                Please upload and analyze your resume first.
+                Career recommendations will be generated based
+                on your detected skills.
+            </p>
+
+            <a href="{{ url_for('resume') }}"
+               class="primary-btn">
+
+                <i class="fa-solid fa-file-arrow-up"></i>
+
+                Analyze My Resume
+
+            </a>
+
+        </div>
+
+    {% else %}
+
+
+    <!-- ================================= -->
+    <!-- RESUME SUMMARY -->
+    <!-- ================================= -->
+
+    <div class="summary-grid">
+
+        <div class="summary-card">
+
+            <i class="fa-solid fa-file-circle-check"></i>
+
+            <h3>Resume Score</h3>
+
+            <strong>
+                {{ resume_score }}%
+            </strong>
+
+        </div>
+
+
+        <div class="summary-card">
+
+            <i class="fa-solid fa-code"></i>
+
+            <h3>Skills Detected</h3>
+
+            <strong>
+                {{ detected_skills|length }}
+            </strong>
+
+        </div>
+
+
+        <div class="summary-card">
+
+            <i class="fa-solid fa-triangle-exclamation"></i>
+
+            <h3>Skills To Improve</h3>
+
+            <strong>
+                {{ missing_skills|length }}
+            </strong>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================================= -->
+    <!-- DETECTED SKILLS -->
+    <!-- ================================= -->
+
+    <div class="section-card">
+
+        <div class="section-title">
+
+            <i class="fa-solid fa-laptop-code"></i>
+
+            <h2>
+                Your Detected Skills
+            </h2>
+
+        </div>
+
+
+        <div class="skill-list">
+
+            {% for skill in detected_skills %}
+
+                <span class="skill-tag">
+
+                    <i class="fa-solid fa-check"></i>
+
+                    {{ skill }}
+
+                </span>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+
+    <!-- ================================= -->
+    <!-- RECOMMENDED CAREER -->
+    <!-- ================================= -->
+
+    <div class="recommended-card">
+
+        <div class="career-icon">
+
+            <i class="fa-solid fa-briefcase"></i>
+
+        </div>
+
+        <div class="career-content">
+
+            <span class="recommend-label">
+                BEST MATCH FOR YOU
+            </span>
+
+            <h2>
+                {{ recommended_career }}
+            </h2>
+
+            <p>
+                {{ reason }}
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================================= -->
+    <!-- TARGET CAREER -->
+    <!-- ================================= -->
+
+    <div class="target-career-box">
+
+        <div class="target-icon">
+
+            <i class="fa-solid fa-bullseye"></i>
+
+        </div>
+
+        <div class="target-content">
+
+            <span class="target-label">
+                YOUR CAREER GOAL
+            </span>
+
+            <h2>
+                Choose Your Target Career
+            </h2>
+
+            <p>
+                Select the career you want to prepare for.
+                Your Skill Gap Analysis, Placement Prediction
+                and AI Mock Interview will be based on this career.
+            </p>
+
+            <form action="{{ url_for('set_target_career') }}"
+      method="POST">
+
+    <input type="hidden"
+           id="targetCareerInput"
+           name="career"
+           value="{{ recommended_career }}">
+
+    <button type="submit"
+            id="targetCareerButton"
+            class="primary-btn">
+
+        <i class="fa-solid fa-check"></i>
+
+        Select {{ recommended_career }}
+
+    </button>
+
+</form>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================================= -->
+    <!-- MISSING SKILLS -->
+    <!-- ================================= -->
+
+    <div class="section-card">
+
+        <div class="section-title">
+
+            <i class="fa-solid fa-chart-line"></i>
+
+            <h2>
+                Skills You Should Improve
+            </h2>
+
+        </div>
+
+
+        {% if missing_skills %}
+
+        <div class="missing-list">
+
+            {% for skill in missing_skills %}
+
+                <div class="missing-item">
+
+                    <i class="fa-solid fa-circle-exclamation"></i>
+
+                    <span>
+                        {{ skill }}
+                    </span>
+
+                </div>
+
+            {% endfor %}
+
+        </div>
+
+        {% else %}
+
+            <p>
+                Great! Your resume contains most of the
+                important placement skills.
+            </p>
+
+        {% endif %}
+
+    </div>
+
+
+    <!-- ================================= -->
+    <!-- OTHER CAREER OPTIONS -->
+    <!-- ================================= -->
+
+    <div class="section-card">
+
+        <div class="section-title">
+
+            <i class="fa-solid fa-route"></i>
+
+            <h2>
+                Explore Career Options
+            </h2>
+
+        </div>
+
+        <p class="career-helper-text">
+            Click any career to see the skills required,
+            what you need to learn and the recommended course roadmap.
+        </p>
+
+
+      <div class="career-options">
+
+    {% for career in other_careers %}
+
+        <div class="career-option"
+             data-career="{{ career }}">
+
+            <i class="fa-solid fa-arrow-right"></i>
+
+            <span>
+                {{ career }}
+            </span>
+
+            <i class="fa-solid fa-chevron-right career-chevron"></i>
+
+        </div>
+
+    {% endfor %}
+
+</div>
+
+    </div>
+
+
+    <!-- ================================= -->
+    <!-- CAREER DETAILS MODAL -->
+    <!-- ================================= -->
+
+    <div class="career-modal"
+         id="careerModal"
+         aria-hidden="true">
+
+        <div class="career-modal-overlay"
+             id="careerModalOverlay"></div>
+
+
+        <div class="career-modal-content">
+
+            <button type="button"
+                    class="career-modal-close"
+                    id="careerModalClose">
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </button>
+
+
+            <!-- Career Header -->
+
+            <div class="modal-career-header">
+
+                <div class="modal-career-icon">
+
+                    <i class="fa-solid fa-graduation-cap"></i>
+
+                </div>
+
+                <div>
+
+                    <span>
+                        CAREER LEARNING PATH
+                    </span>
+
+                    <h2 id="modalCareerName">
+                        Career
+                    </h2>
+
+                    <p id="modalCareerDescription">
+                        Career details
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- Your Skills -->
+
+            <div class="modal-section">
+
+                <h3>
+
+                    <i class="fa-solid fa-circle-check"></i>
+
+                    Your Existing Skills
+
+                </h3>
+
+                <div id="modalExistingSkills"
+                     class="modal-skill-list">
+                </div>
+
+            </div>
+
+
+            <!-- Required Skills -->
+
+            <div class="modal-section">
+
+                <h3>
+
+                    <i class="fa-solid fa-bullseye"></i>
+
+                    Skills Required
+
+                </h3>
+
+                <div id="modalRequiredSkills"
+                     class="modal-skill-list">
+                </div>
+
+            </div>
+
+
+            <!-- Missing Skills -->
+
+            <div class="modal-section">
+
+                <h3>
+
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+
+                    Skills You Need To Learn
+
+                </h3>
+
+                <div id="modalMissingSkills"
+                     class="modal-skill-list">
+                </div>
+
+            </div>
+
+
+            <!-- Course Roadmap -->
+
+            <div class="modal-section">
+
+                <h3>
+
+                    <i class="fa-solid fa-road"></i>
+
+                    Course Learning Roadmap
+
+                </h3>
+
+                <div id="modalRoadmap"
+                     class="course-roadmap">
+                </div>
+
+            </div>
+
+
+            <!-- Course Information -->
+
+            <div class="course-info-box">
+
+                <div>
+
+                    <i class="fa-solid fa-video"></i>
+
+                    <span>
+                        Video Tutorials
+                    </span>
+
+                </div>
+
+                <div>
+
+                    <i class="fa-solid fa-book-open"></i>
+
+                    <span>
+                        Notes
+                    </span>
+
+                </div>
+
+                <div>
+
+                    <i class="fa-solid fa-pen"></i>
+
+                    <span>
+                        Practice
+                    </span>
+
+                </div>
+
+                <div>
+
+                    <i class="fa-solid fa-chart-line"></i>
+
+                    <span>
+                        Progress Tracking
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- Modal Actions -->
+
+            <div class="modal-actions">
+
+                <button type="button"
+                        class="modal-select-btn"
+                        id="modalSelectCareer">
+
+                    <i class="fa-solid fa-check"></i>
+
+                    Select This Career
+
+                </button>
+
+
+                <a href="#"
+                   class="modal-learning-btn"
+                   id="modalStartLearning">
+
+                    <i class="fa-solid fa-play"></i>
+
+                    Start Learning
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================================= -->
+    <!-- NEXT STEPS -->
+    <!-- ================================= -->
+
+    <div class="next-steps">
+
+        <h2>
+
+            <i class="fa-solid fa-rocket"></i>
+
+            Continue Your Career Journey
+
+        </h2>
+
+
+        <div class="action-buttons">
+
+            <a href="{{ url_for('skill_gap') }}"
+               class="action-btn">
+
+                <i class="fa-solid fa-code"></i>
+
+                Skill Gap Analysis
+
+            </a>
+
+
+            <a href="{{ url_for('placement') }}"
+               class="action-btn">
+
+                <i class="fa-solid fa-chart-column"></i>
+
+                Placement Prediction
+
+            </a>
+
+
+            <a href="{{ url_for('interview') }}"
+               class="action-btn">
+
+                <i class="fa-solid fa-user-tie"></i>
+
+                AI Mock Interview
+
+            </a>
+
+
+            <a href="{{ url_for('jobs') }}"
+               class="action-btn">
+
+                <i class="fa-solid fa-briefcase"></i>
+
+                Explore Jobs
+
+            </a>
+
+        </div>
+
+    </div>
+
+
+    {% endif %}
+
+</div>
+
+
+<script src="{{ url_for('static', filename='career.js') }}"></script>
+
+</body>
+
+</html>
