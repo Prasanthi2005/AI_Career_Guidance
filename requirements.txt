@@ -1,0 +1,23 @@
+# Core Web Framework
+Flask>=3.1,<4.0
+gunicorn>=23.0,<24.0
+
+# Environment & Configuration
+python-dotenv>=1.1,<2.0
+
+# Database
+mysql-connector-python>=9.0,<10.0
+
+# Google Gemini AI
+google-genai>=1.0,<2.0
+
+# Google OAuth / OpenID Connect
+Authlib>=1.3,<2.0
+
+# HTTP/API Integration
+requests>=2.32,<3.0
+
+# PDF Resume Processing
+pypdf>=5.0,<7.0
+
+# Production WSGI / Flask dependencies are installed automatically

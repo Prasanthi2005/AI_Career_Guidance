@@ -1,0 +1,569 @@
+/* ==========================
+   Google Font
+========================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* ==========================
+   Reset
+========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+body{
+    margin:0;
+    width:100%;
+    height:100vh;
+    overflow:hidden;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+     background:
+        radial-gradient(
+            circle at 10% 20%,
+            rgba(0, 229, 255, 0.16),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 90% 70%,
+            rgba(0, 132, 255, 0.18),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #020b24,
+            #061a45 48%,
+            #032b55
+        );
+    font-family:'Poppins',sans-serif;
+}
+
+/* ==========================
+   Animated Background
+========================== */
+
+.background{
+    position:absolute;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    z-index:0;
+}
+
+.background span{
+    position:absolute;
+    display:block;
+    width:25px;
+    height:25px;
+    background:rgba(255,255,255,.08);
+    border-radius:50%;
+    animation:animate 18s linear infinite;
+}
+
+.background span:nth-child(1){
+    left:10%;
+    animation-delay:0s;
+}
+
+.background span:nth-child(2){
+    left:25%;
+    animation-delay:3s;
+}
+
+.background span:nth-child(3){
+    left:45%;
+    animation-delay:6s;
+}
+
+.background span:nth-child(4){
+    left:65%;
+    animation-delay:2s;
+}
+
+.background span:nth-child(5){
+    left:80%;
+    animation-delay:8s;
+}
+
+.background span:nth-child(6){
+    left:92%;
+    animation-delay:4s;
+}
+
+@keyframes animate{
+
+0%{
+transform:translateY(100vh) scale(.3);
+opacity:0;
+}
+
+20%{
+opacity:1;
+}
+
+100%{
+transform:translateY(-120vh) scale(1.5);
+opacity:0;
+}
+
+}
+
+/* ==========================
+   Main Container
+========================== */
+/* ==========================
+   Left Section
+========================== */
+.container{
+    width:1150px;
+    height:700px;
+
+    display:flex;
+
+    border-radius:25px;
+
+    overflow:hidden;
+
+    /* REMOVE THESE */
+    /* background:rgba(255,255,255,.05); */
+    /* backdrop-filter:blur(20px); */
+    /* box-shadow:0 20px 50px rgba(0,0,0,.35); */
+
+    
+    box-shadow:none;
+}
+.left-section{
+    flex:1;
+    padding:60px;
+    background:transparent;
+    color:#fff;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+.left-section,
+.right-section{
+    flex:1;
+}
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:30px;
+}
+
+.logo i{
+    font-size:40px;
+    color:#00e5ff;
+}
+
+.logo h2{
+    font-size:26px;
+}
+
+.left-section h1{
+    font-size:42px;
+    margin-bottom:20px;
+    line-height:1.2;
+}
+
+.left-section p{
+    font-size:17px;
+    line-height:28px;
+    color:#d7e8ff;
+    margin-bottom:35px;
+}
+
+.illustration{
+    width:100%;
+    max-width:380px;
+    margin:auto;
+    
+}
+
+@keyframes floatImage{
+
+0%{
+transform:translateY(0px);
+}
+
+50%{
+transform:translateY(-15px);
+}
+
+100%{
+transform:translateY(0px);
+}
+
+}
+/* ==========================
+   Right Section
+========================== */
+.right-section{
+    flex:1;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    
+
+    padding:40px;
+}
+
+.glass-card{
+    width:100%;
+    max-width:470px;
+
+    background:rgba(255,255,255,.12);
+-webkit-backdrop-filter: blur(20px);
+backdrop-filter: blur(20px);
+    
+
+    border-radius:20px;
+
+    padding:35px;
+
+    border:1px solid rgba(255,255,255,.15);
+
+    box-shadow:0 10px 30px rgba(0,0,0,.25);
+}
+.glass-card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 20px 50px rgba(0,229,255,.25);
+}
+
+
+.glass-card h2{
+    color:#fff;
+    text-align:center;
+    font-size:34px;
+    margin-bottom:10px;
+}
+
+.glass-card p{
+    text-align:center;
+    color:#dbeeff;
+    margin-bottom:30px;
+}
+
+/* ==========================
+   Input Box
+========================== */
+
+.input-box{
+    position:relative;
+    margin-bottom:22px;
+}
+
+.input-box input{
+
+    width:100%;
+    height:55px;
+
+    border:none;
+    outline:none;
+
+    background:rgba(255,255,255,.12);
+
+    border-radius:12px;
+
+    color:#fff;
+
+    font-size:16px;
+
+    padding-left:50px;
+
+    transition:.3s;
+
+}
+
+.input-box input::placeholder{
+    color:#d8d8d8;
+}
+
+.input-box input:focus{
+
+    border:1px solid #00e5ff;
+
+    box-shadow:0 0 15px rgba(0,229,255,.35);
+
+}
+
+/* ==========================
+   Icons
+========================== */
+
+.input-box .fa-envelope{
+
+    position:absolute;
+
+    left:18px;
+
+    top:50%;
+
+    transform:translateY(-50%);
+
+    color:#00e5ff;
+
+    font-size:18px;
+
+}
+
+#togglePassword{
+
+    position:absolute;
+
+    left:18px;
+
+    top:50%;
+
+    transform:translateY(-50%);
+
+    color:#00e5ff;
+
+    font-size:18px;
+
+    cursor:pointer;
+
+}
+
+/* ==========================
+   Remember & Forgot
+========================== */
+
+.options{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:25px;
+
+    font-size:14px;
+
+    color:#fff;
+
+}
+
+.options a{
+
+    color:#00e5ff;
+
+    text-decoration:none;
+
+}
+
+.options a:hover{
+
+    text-decoration:underline;
+
+}
+/* ==========================
+   Login Button
+========================== */
+
+.login-btn{
+    width:100%;
+    height:55px;
+    border:none;
+    outline:none;
+    border-radius:12px;
+    background:linear-gradient(135deg,#00bcd4,#007bff);
+    color:#fff;
+    font-size:18px;
+    font-weight:600;
+    cursor:pointer;
+    transition:.35s;
+}
+
+.login-btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 10px 25px rgba(0,229,255,.4);
+}
+
+/* ==========================
+   Divider
+========================== */
+
+.divider{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin:25px 0;
+    color:#ddd;
+    font-size:15px;
+}
+
+.divider::before,
+.divider::after{
+    content:"";
+    flex:1;
+    height:1px;
+    background:rgba(255,255,255,.25);
+}
+
+.divider span{
+    padding:0 15px;
+}
+
+/* ==========================
+   Google Button
+========================== */
+
+.google-btn{
+    width:100%;
+    height:52px;
+    border:none;
+    border-radius:12px;
+    background:#fff;
+    color:#333;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:12px;
+    cursor:pointer;
+    font-size:16px;
+    font-weight:500;
+    transition:.3s;
+}
+
+.google-btn img{
+    width:24px;
+}
+
+.google-btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 10px 25px rgba(255,255,255,.3);
+}
+
+/* ==========================
+   Register Link
+========================== */
+
+.register-link{
+    margin-top:25px;
+    text-align:center;
+    color:#fff;
+    font-size:15px;
+}
+
+.register-link a{
+    color:#00e5ff;
+    text-decoration:none;
+    font-weight:600;
+}
+
+.register-link a:hover{
+    text-decoration:underline;
+}
+
+/* ==========================
+   Card Animation
+========================== */
+
+.glass-card{
+    animation:fadeUp .8s ease;
+}
+
+@keyframes fadeUp{
+
+    from{
+        opacity:0;
+        transform:translateY(40px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+/* ==========================
+   Responsive
+========================== */
+
+@media(max-width:992px){
+
+.container{
+    flex-direction:column;
+    width:95%;
+}
+
+.left-section,
+.right-section{
+    width:100%;
+}
+
+.left-section{
+    text-align:center;
+    padding:40px;
+}
+
+.logo{
+    justify-content:center;
+}
+
+.illustration{
+    max-width:260px;
+}
+
+.login-card{
+    max-width:100%;
+}
+
+}
+
+@media(max-width:576px){
+
+.left-section h1{
+    font-size:30px;
+}
+
+.left-section p{
+    font-size:15px;
+}
+
+.glass-card{
+    padding:30px 20px;
+}
+
+.glass-card h2{
+    font-size:28px;
+}
+
+.input-box input{
+    font-size:15px;
+}
+
+.login-btn,
+.google-btn{
+    font-size:16px;
+}
+
+}
+
+/* ==========================
+   Scrollbar
+========================== */
+
+::-webkit-scrollbar{
+    width:8px;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#00bcd4;
+    border-radius:10px;
+}
+
+::-webkit-scrollbar-track{
+    background:#041338;
+}

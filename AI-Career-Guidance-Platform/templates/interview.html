@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Mock Interview | AI Career Guidance</title>
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='interview.css') }}">
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header class="top-header">
+
+    <div class="brand">
+        <span>AI</span> Career Guidance & Placement Platform
+    </div>
+
+    <div class="welcome">
+        <i class="fa-solid fa-circle-user"></i>
+        Welcome, {{ fullname }}
+    </div>
+
+</header>
+
+
+<!-- ================= MAIN ================= -->
+
+<main class="interview-wrapper">
+
+    <!-- ================= SETUP SCREEN ================= -->
+
+    <section id="setupScreen" class="screen">
+
+        <div class="hero">
+
+            <div class="hero-icon">
+                <i class="fa-solid fa-user-tie"></i>
+            </div>
+
+            <div>
+                <span class="eyebrow">AI POWERED INTERVIEW SIMULATOR</span>
+
+                <h1>AI Mock Interview</h1>
+
+                <p>
+                    Experience a realistic interview based on your target career.
+                    Answer naturally using your voice.
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="setup-grid">
+
+            <!-- Target career -->
+
+            <div class="setup-card">
+
+                <div class="card-icon cyan">
+                    <i class="fa-solid fa-bullseye"></i>
+                </div>
+
+                <h2>Target Career</h2>
+
+                <select id="careerSelect">
+
+                    <option value="Frontend Developer">
+                        Frontend Developer
+                    </option>
+
+                    <option value="Backend Developer">
+                        Backend Developer
+                    </option>
+
+                    <option value="Python Developer">
+                        Python Developer
+                    </option>
+
+                    <option value="Full Stack Developer">
+                        Full Stack Developer
+                    </option>
+
+                    <option value="Data Scientist">
+                        Data Scientist
+                    </option>
+
+                    <option value="AI / Machine Learning Engineer">
+                        AI / Machine Learning Engineer
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- Interview type -->
+
+            <div class="setup-card">
+
+                <div class="card-icon purple">
+                    <i class="fa-solid fa-layer-group"></i>
+                </div>
+
+                <h2>Interview Format</h2>
+
+                <div class="format-list">
+
+                    <div>
+                        <i class="fa-solid fa-user"></i>
+                        HR Round
+                    </div>
+
+                    <div>
+                        <i class="fa-solid fa-code"></i>
+                        Technical Round
+                    </div>
+
+                    <div>
+                        <i class="fa-solid fa-brain"></i>
+                        Situational Round
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Interview info -->
+
+            <div class="setup-card">
+
+                <div class="card-icon blue">
+                    <i class="fa-solid fa-clock"></i>
+                </div>
+
+                <h2>Interview Details</h2>
+
+                <div class="details">
+
+                    <p>
+                        <i class="fa-solid fa-circle-check"></i>
+                        6 Questions
+                    </p>
+
+                    <p>
+                        <i class="fa-solid fa-circle-check"></i>
+                        Voice Based
+                    </p>
+
+                    <p>
+                        <i class="fa-solid fa-circle-check"></i>
+                        AI Evaluation
+                    </p>
+
+                    <p>
+                        <i class="fa-solid fa-circle-check"></i>
+                        Final Readiness Score
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="instruction-box">
+
+            <i class="fa-solid fa-lightbulb"></i>
+
+            <div>
+
+                <strong>Before you begin</strong>
+
+                <p>
+                    Allow microphone and camera access.
+                    Answer naturally as if you are speaking to a real interviewer.
+                    Do not type your answers.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <button id="startInterviewBtn" class="primary-btn">
+
+            <i class="fa-solid fa-play"></i>
+
+            Start Interview
+
+        </button>
+
+    </section>
+
+
+
+    <!-- ================= INTERVIEW SCREEN ================= -->
+
+    <section id="interviewScreen" class="screen hidden">
+
+        <!-- Progress -->
+
+        <div class="interview-top">
+
+            <div>
+
+                <span class="small-label">
+                    LIVE AI INTERVIEW
+                </span>
+
+                <h2 id="careerTitle">
+                    Frontend Developer
+                </h2>
+
+            </div>
+
+
+            <div class="live-status">
+
+                <span class="live-dot"></span>
+
+                LIVE
+
+            </div>
+
+        </div>
+
+
+        <div class="progress-container">
+
+            <div class="progress-info">
+
+                <span id="questionNumber">
+                    Question 1 of 6
+                </span>
+
+                <span id="timer">
+                    01:30
+                </span>
+
+            </div>
+
+            <div class="progress-bar">
+
+                <div id="progressFill"></div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Interview grid -->
+
+        <div class="interview-grid">
+
+
+            <!-- LEFT : CAMERA -->
+
+            <div class="camera-panel">
+
+                <div class="panel-heading">
+
+                    <span>
+                        <i class="fa-solid fa-video"></i>
+                        Interview Camera
+                    </span>
+
+                    <span class="camera-status">
+                        <span></span>
+                        Camera On
+                    </span>
+
+                </div>
+
+
+                <div class="camera-container">
+
+                    <video id="cameraVideo"
+                           autoplay
+                           muted
+                           playsinline>
+                    </video>
+
+                    <div id="cameraPlaceholder"
+                         class="camera-placeholder">
+
+                        <i class="fa-solid fa-user"></i>
+
+                        <p>Camera Preview</p>
+
+                    </div>
+
+                    <div class="recording-indicator">
+
+                        <span></span>
+
+                        RECORDING
+
+                    </div>
+
+                </div>
+
+
+                <div class="camera-tips">
+
+                    <p>
+                        <i class="fa-solid fa-check"></i>
+                        Keep your face visible
+                    </p>
+
+                    <p>
+                        <i class="fa-solid fa-check"></i>
+                        Speak clearly
+                    </p>
+
+                    <p>
+                        <i class="fa-solid fa-check"></i>
+                        Maintain professional confidence
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- RIGHT : QUESTION -->
+
+            <div class="question-panel">
+
+                <div class="question-header">
+
+                    <div class="question-category"
+                         id="questionCategory">
+
+                        HR ROUND
+
+                    </div>
+
+                    <div class="difficulty"
+                         id="difficulty">
+
+                        EASY
+
+                    </div>
+
+                </div>
+
+
+                <div class="ai-interviewer">
+
+                    <div class="ai-avatar">
+
+                        <i class="fa-solid fa-robot"></i>
+
+                    </div>
+
+                    <div>
+
+                        <strong>AI Interviewer</strong>
+
+                        <span>
+                            Your virtual interviewer
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="question-box">
+
+                    <span class="question-label">
+                        INTERVIEW QUESTION
+                    </span>
+
+                    <h1 id="questionText">
+                        Tell me about yourself.
+                    </h1>
+
+                    <button id="speakQuestionBtn"
+                            class="speak-question">
+
+                        <i class="fa-solid fa-volume-high"></i>
+
+                        Hear Question
+
+                    </button>
+
+                </div>
+
+
+                <!-- Voice answer -->
+
+                <div class="voice-answer">
+
+                    <div class="voice-header">
+
+                        <span>
+                            <i class="fa-solid fa-microphone"></i>
+                            Your Answer
+                        </span>
+
+                        <span id="wordCount">
+                            0 words
+                        </span>
+
+                    </div>
+
+
+                    <div id="transcript"
+                         class="transcript">
+
+                        <span class="placeholder-text">
+                            Click "Start Answer" and speak naturally...
+                        </span>
+
+                    </div>
+
+
+                    <div class="voice-controls">
+
+                        <button id="startAnswerBtn"
+                                class="record-btn">
+
+                            <i class="fa-solid fa-microphone"></i>
+
+                            Start Answer
+
+                        </button>
+
+
+                        <button id="stopAnswerBtn"
+                                class="stop-btn"
+                                disabled>
+
+                            <i class="fa-solid fa-stop"></i>
+
+                            Stop
+
+                        </button>
+
+                    </div>
+
+
+                    <div id="listeningStatus"
+                         class="listening-status hidden">
+
+                        <span class="pulse"></span>
+
+                        AI is listening...
+
+                    </div>
+
+                </div>
+
+
+                <!-- Next -->
+
+                <button id="submitAnswerBtn"
+                        class="next-btn"
+                        disabled>
+
+                    Submit Answer
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= EVALUATING SCREEN ================= -->
+
+    <section id="evaluatingScreen"
+             class="screen hidden">
+
+        <div class="evaluation-loader">
+
+            <div class="loader-ring">
+
+                <i class="fa-solid fa-brain"></i>
+
+            </div>
+
+            <h1>AI is evaluating your answer...</h1>
+
+            <p>
+                Analysing communication, confidence,
+                relevance and technical knowledge.
+            </p>
+
+            <div class="analysis-items">
+
+                <span>
+                    <i class="fa-solid fa-check"></i>
+                    Communication
+                </span>
+
+                <span>
+                    <i class="fa-solid fa-check"></i>
+                    Relevance
+                </span>
+
+                <span>
+                    <i class="fa-solid fa-check"></i>
+                    Technical Knowledge
+                </span>
+
+                <span>
+                    <i class="fa-solid fa-check"></i>
+                    Confidence
+                </span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= FINAL RESULT ================= -->
+
+    <section id="resultScreen"
+             class="screen hidden">
+
+        <div class="result-header">
+
+            <span class="eyebrow">
+                INTERVIEW COMPLETED
+            </span>
+
+            <h1>Your Career Readiness Report</h1>
+
+            <p id="resultMessage">
+                Great job! Here is your AI interview analysis.
+            </p>
+
+        </div>
+
+
+        <div class="score-dashboard">
+
+            <div class="overall-score">
+
+                <div class="score-circle">
+
+                    <svg>
+                        <circle
+                            cx="80"
+                            cy="80"
+                            r="68">
+                        </circle>
+
+                        <circle
+                            id="scoreProgress"
+                            cx="80"
+                            cy="80"
+                            r="68">
+                        </circle>
+                    </svg>
+
+                    <div class="score-number">
+
+                        <strong id="overallScore">
+                            0
+                        </strong>
+
+                        <span>/100</span>
+
+                    </div>
+
+                </div>
+
+                <h2>Overall Score</h2>
+
+                <span id="readinessBadge"
+                      class="readiness-badge">
+                    ANALYSING
+                </span>
+
+            </div>
+
+
+            <div class="metric-grid">
+
+                <div class="metric-card">
+
+                    <i class="fa-solid fa-comments"></i>
+
+                    <span>Communication</span>
+
+                    <strong id="communicationScore">
+                        0
+                    </strong>
+
+                    <div class="metric-bar">
+                        <div id="communicationBar"></div>
+                    </div>
+
+                </div>
+
+
+                <div class="metric-card">
+
+                    <i class="fa-solid fa-code"></i>
+
+                    <span>Technical Knowledge</span>
+
+                    <strong id="technicalScore">
+                        0
+                    </strong>
+
+                    <div class="metric-bar">
+                        <div id="technicalBar"></div>
+                    </div>
+
+                </div>
+
+
+                <div class="metric-card">
+
+                    <i class="fa-solid fa-bullseye"></i>
+
+                    <span>Relevance</span>
+
+                    <strong id="relevanceScore">
+                        0
+                    </strong>
+
+                    <div class="metric-bar">
+                        <div id="relevanceBar"></div>
+                    </div>
+
+                </div>
+
+
+                <div class="metric-card">
+
+                    <i class="fa-solid fa-shield-heart"></i>
+
+                    <span>Confidence</span>
+
+                    <strong id="confidenceScore">
+                        0
+                    </strong>
+
+                    <div class="metric-bar">
+                        <div id="confidenceBar"></div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="feedback-grid">
+
+            <div class="feedback-card strengths">
+
+                <h2>
+                    <i class="fa-solid fa-circle-check"></i>
+                    Strengths
+                </h2>
+
+                <ul id="strengthsList"></ul>
+
+            </div>
+
+
+            <div class="feedback-card improvements">
+
+                <h2>
+                    <i class="fa-solid fa-arrow-trend-up"></i>
+                    Areas To Improve
+                </h2>
+
+                <ul id="improvementsList"></ul>
+
+            </div>
+
+        </div>
+
+
+        <div class="final-actions">
+
+            <button onclick="location.reload()"
+                    class="secondary-btn">
+
+                <i class="fa-solid fa-rotate-right"></i>
+
+                Retake Interview
+
+            </button>
+
+
+            <a href="{{ url_for('placement') }}"
+               class="primary-btn">
+
+                <i class="fa-solid fa-chart-line"></i>
+
+                View Placement Prediction
+
+            </a>
+
+
+            <a href="{{ url_for('dashboard') }}"
+               class="secondary-btn">
+
+                <i class="fa-solid fa-house"></i>
+
+                Dashboard
+
+            </a>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<script src="{{ url_for('static', filename='interview.js') }}"></script>
+
+</body>
+</html>

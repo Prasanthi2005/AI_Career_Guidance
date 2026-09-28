@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Learning Roadmap | AI Career Guidance
+    </title>
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    >
+
+    <!-- Learning CSS -->
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='learning.css') }}"
+    >
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     BACKGROUND
+===================================================== -->
+
+<div class="background" aria-hidden="true">
+
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+
+</div>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header class="learning-header">
+
+    <div class="header-title">
+
+        <i class="fa-solid fa-graduation-cap"></i>
+
+        <div>
+
+            <h2>
+                AI Career Guidance
+            </h2>
+
+            <p>
+                Personalized Learning Path
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="user-profile">
+
+        <i class="fa-solid fa-user-circle"></i>
+
+        <span>
+            Welcome, {{ fullname }}
+        </span>
+
+    </div>
+
+</header>
+
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<main
+    class="learning-container"
+    data-career="{{ career|e }}"
+    data-progress="{{ progress }}"
+>
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="learning-hero">
+
+    <div class="hero-icon">
+
+        <i class="fa-solid fa-route"></i>
+
+    </div>
+
+
+    <div>
+
+        <span class="hero-label">
+            YOUR TARGET CAREER
+        </span>
+
+
+        <h1>
+            {{ career }}
+        </h1>
+
+
+        <p>
+            {{ description }}
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     SKILLS YOU NEED
+===================================================== -->
+
+<section class="learning-section">
+
+    <div class="section-heading">
+
+        <div class="heading-icon">
+
+            <i class="fa-solid fa-code"></i>
+
+        </div>
+
+
+        <div>
+
+            <span>
+                CAREER SKILLS
+            </span>
+
+            <h2>
+                Skills You Need
+            </h2>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         REQUIRED SKILLS
+    ================================================= -->
+
+    <div class="skills-grid">
+
+        {% if required_skills %}
+
+            {% for skill in required_skills %}
+
+                <div
+                    class="learning-skill
+                    {% if skill in existing_skills %}
+                        skill-completed
+                    {% else %}
+                        skill-missing
+                    {% endif %}"
+                >
+
+                    {% if skill in existing_skills %}
+
+                        <i class="fa-solid fa-circle-check"></i>
+
+                    {% else %}
+
+                        <i class="fa-solid fa-circle-exclamation"></i>
+
+                    {% endif %}
+
+
+                    <span>
+                        {{ skill }}
+                    </span>
+
+                </div>
+
+            {% endfor %}
+
+        {% else %}
+
+            <div class="learning-skill">
+
+                <i class="fa-solid fa-circle-info"></i>
+
+                <span>
+                    No career skills available.
+                </span>
+
+            </div>
+
+        {% endif %}
+
+    </div>
+
+
+
+    <!-- =================================================
+         SKILL SUMMARY
+    ================================================= -->
+
+    <div class="skill-summary">
+
+        <!-- Skills You Have -->
+
+        <div class="skill-summary-card">
+
+            <i class="fa-solid fa-circle-check"></i>
+
+            <div>
+
+                <strong>
+                    {{ existing_skills|length }}
+                </strong>
+
+                <span>
+                    Skills You Have
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- Skills To Learn -->
+
+        <div class="skill-summary-card">
+
+            <i class="fa-solid fa-circle-exclamation"></i>
+
+            <div>
+
+                <strong>
+                    {{ missing_skills|length }}
+                </strong>
+
+                <span>
+                    Skills To Learn
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- Total -->
+
+        <div class="skill-summary-card">
+
+            <i class="fa-solid fa-list-check"></i>
+
+            <div>
+
+                <strong>
+                    {{ required_skills|length }}
+                </strong>
+
+                <span>
+                    Total Required
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     MISSING SKILLS
+===================================================== -->
+
+{% if missing_skills %}
+
+<section class="learning-section">
+
+    <div class="section-heading">
+
+        <div class="heading-icon">
+
+            <i class="fa-solid fa-bullseye"></i>
+
+        </div>
+
+
+        <div>
+
+            <span>
+                YOUR SKILL GAP
+            </span>
+
+            <h2>
+                Skills You Need To Learn
+            </h2>
+
+        </div>
+
+    </div>
+
+
+    <div class="skills-grid">
+
+        {% for skill in missing_skills %}
+
+            <div class="learning-skill skill-missing">
+
+                <i class="fa-solid fa-book-open"></i>
+
+                <span>
+                    {{ skill }}
+                </span>
+
+            </div>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+{% else %}
+
+<section class="learning-section">
+
+    <div class="section-heading">
+
+        <div class="heading-icon">
+
+            <i class="fa-solid fa-circle-check"></i>
+
+        </div>
+
+
+        <div>
+
+            <span>
+                GREAT JOB
+            </span>
+
+            <h2>
+                No Skill Gap Detected
+            </h2>
+
+        </div>
+
+    </div>
+
+
+    <div class="learning-skill skill-completed">
+
+        <i class="fa-solid fa-check-double"></i>
+
+        <span>
+            You already have all the required skills
+            for this career.
+        </span>
+
+    </div>
+
+</section>
+
+{% endif %}
+
+
+
+<!-- =====================================================
+     COMPLETE LEARNING ROADMAP
+===================================================== -->
+
+<section class="learning-section">
+
+    <div class="section-heading">
+
+        <div class="heading-icon">
+
+            <i class="fa-solid fa-map"></i>
+
+        </div>
+
+
+        <div>
+
+            <span>
+                STEP BY STEP
+            </span>
+
+            <h2>
+                Complete Learning Roadmap
+            </h2>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =================================================
+         ROADMAP
+    ================================================= -->
+
+    <div
+        class="course-list"
+        id="courseContainer"
+    >
+
+        {% if roadmap %}
+
+            {% for course in roadmap %}
+
+                <article
+                    class="course-card"
+                    data-index="{{ loop.index0 }}"
+                    data-title="{{ course.title|e }}"
+                    data-topics="{{ course.topics|e }}"
+                >
+
+
+                    <!-- NUMBER -->
+
+                    <div class="course-number">
+
+                        {{ loop.index }}
+
+                    </div>
+
+
+
+                    <!-- ICON -->
+
+                    <div class="course-icon">
+
+                        <i class="fa-solid fa-book-open"></i>
+
+                    </div>
+
+
+
+                    <!-- CONTENT -->
+
+                    <div class="course-content">
+
+
+                        <h3>
+                            {{ course.title }}
+                        </h3>
+
+
+                        <p>
+                            {{ course.topics }}
+                        </p>
+
+
+
+                        <!-- BUTTONS -->
+
+                        <div class="course-buttons">
+
+
+                            <!-- LEARN -->
+
+                            <button
+                                type="button"
+                                class="learn-course-btn"
+                                data-title="{{ course.title|e }}"
+                                data-topics="{{ course.topics|e }}"
+                            >
+
+                                <i class="fa-solid fa-play"></i>
+
+                                Learn This Course
+
+                            </button>
+
+
+
+                            <!-- YOUTUBE -->
+
+                            <a
+                                class="youtube-course-btn"
+                                href="https://www.youtube.com/results?search_query={{ (career ~ ' ' ~ course.title ~ ' tutorial')|urlencode }}"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+
+                                <i class="fa-brands fa-youtube"></i>
+
+                                Watch Tutorials
+
+                            </a>
+
+                        </div>
+
+
+                    </div>
+
+                </article>
+
+            {% endfor %}
+
+
+        {% else %}
+
+
+            <!-- NO ROADMAP -->
+
+            <div class="course-card">
+
+                <div class="course-number">
+                    !
+                </div>
+
+
+                <div class="course-icon">
+
+                    <i class="fa-solid fa-book-open"></i>
+
+                </div>
+
+
+                <div class="course-content">
+
+                    <h3>
+                        No Learning Roadmap Available
+                    </h3>
+
+
+                    <p>
+                        A learning roadmap is not available
+                        for this career yet.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+        {% endif %}
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     PROGRESS
+===================================================== -->
+
+<section class="progress-card">
+
+
+    <div class="progress-icon">
+
+        <i class="fa-solid fa-chart-line"></i>
+
+    </div>
+
+
+
+    <div class="progress-content">
+
+        <span>
+            YOUR LEARNING PROGRESS
+        </span>
+
+
+        <h2>
+            {{ progress }}% Career Skill Progress
+        </h2>
+
+
+        <p>
+
+            Your progress is calculated from the skills
+            already detected in your resume.
+
+        </p>
+
+
+
+        <div class="progress-bar">
+
+            <div
+                class="progress-fill"
+                id="progressFill"
+                data-progress="{{ progress }}"
+            ></div>
+
+        </div>
+
+
+        <strong id="progressText">
+
+            {{ progress }}% Complete
+
+        </strong>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     BOTTOM BUTTONS
+===================================================== -->
+
+<div class="learning-actions">
+
+
+    <a
+        href="{{ url_for('skill_gap') }}"
+        class="back-btn"
+    >
+
+        <i class="fa-solid fa-arrow-left"></i>
+
+        Back to Career
+
+    </a>
+
+
+
+    <a
+        href="{{ url_for('skill_gap') }}"
+        class="skill-gap-btn"
+    >
+
+        <i class="fa-solid fa-chart-simple"></i>
+
+        View Skill Gap
+
+    </a>
+
+
+</div>
+
+
+</main>
+
+
+
+<!-- =====================================================
+     COURSE MODAL
+===================================================== -->
+
+<div
+    id="courseModal"
+    class="course-modal"
+    aria-hidden="true"
+>
+
+
+    <!-- OVERLAY -->
+
+    <div
+        id="courseOverlay"
+        class="course-overlay"
+    ></div>
+
+
+
+    <!-- MODAL -->
+
+    <div class="course-modal-content">
+
+
+        <!-- CLOSE -->
+
+        <button
+            type="button"
+            id="courseClose"
+            class="course-close"
+            aria-label="Close"
+        >
+
+            <i class="fa-solid fa-xmark"></i>
+
+        </button>
+
+
+
+        <!-- ICON -->
+
+        <div class="course-modal-icon">
+
+            <i class="fa-solid fa-graduation-cap"></i>
+
+        </div>
+
+
+
+        <span class="course-modal-label">
+            COURSE
+        </span>
+
+
+
+        <h2 id="courseModalTitle">
+            Course
+        </h2>
+
+
+
+        <p id="courseModalDescription">
+            Follow the topics shown in this course,
+            practice them and build a small project.
+        </p>
+
+
+
+        <!-- MODAL TOPICS -->
+
+        <div
+            id="modalTopics"
+            class="modal-topics"
+        ></div>
+
+
+
+        <!-- YOUTUBE -->
+
+        <a
+            id="modalYoutubeBtn"
+            class="youtube-course-btn"
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+
+            <i class="fa-brands fa-youtube"></i>
+
+            Watch YouTube Tutorials
+
+        </a>
+
+
+
+        <!-- COMPLETE -->
+
+        <button
+            type="button"
+            id="courseCompleteBtn"
+            class="course-complete-btn"
+        >
+
+            <i class="fa-solid fa-check"></i>
+
+            Mark Course Complete
+
+        </button>
+
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     LEARNING JS
+===================================================== -->
+
+<script
+    src="{{ url_for('static', filename='learning.js') }}"
+></script>
+
+
+</body>
+
+</html>

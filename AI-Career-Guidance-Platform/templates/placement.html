@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Placement Prediction | AI Career Guidance</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Placement CSS -->
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='placement.css') }}">
+
+</head>
+
+
+<body>
+
+
+<!-- ==========================================
+     HEADER
+========================================== -->
+
+<header class="dashboard-header">
+
+    <div class="brand">
+
+        <span class="brand-ai">AI</span>
+
+        Career Guidance & Placement Platform
+
+    </div>
+
+
+    <div class="user-profile">
+
+        <i class="fa-solid fa-circle-user"></i>
+
+        <span>
+            Welcome, {{ fullname }}
+        </span>
+
+    </div>
+
+</header>
+
+
+
+{% if not analyzed %}
+
+
+<!-- ==========================================
+     NO RESUME
+========================================== -->
+
+<section class="empty-state">
+
+    <div class="empty-icon">
+
+        <i class="fa-solid fa-file-circle-exclamation"></i>
+
+    </div>
+
+    <h1>
+        Resume Analysis Required
+    </h1>
+
+    <p>
+        Please analyze your resume first.
+        Placement prediction will be generated
+        using your resume, skills and academic profile.
+    </p>
+
+    <a href="{{ url_for('resume') }}"
+       class="primary-btn">
+
+        <i class="fa-solid fa-file-arrow-up"></i>
+
+        Analyze My Resume
+
+    </a>
+
+</section>
+
+
+{% else %}
+
+
+<!-- ==========================================
+     MAIN CONTAINER
+========================================== -->
+
+<main class="placement-container">
+
+
+    <!-- ======================================
+         PAGE HEADING
+    ======================================= -->
+
+    <section class="page-heading">
+
+        <div class="heading-icon">
+
+            <i class="fa-solid fa-chart-line"></i>
+
+        </div>
+
+        <div>
+
+            <span class="small-heading">
+                AI PLACEMENT INSIGHTS
+            </span>
+
+            <h1>
+                Placement Prediction
+            </h1>
+
+            <p>
+                AI-powered estimation of your placement
+                readiness based on your resume, skills
+                and academic profile.
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ======================================
+         HERO PREDICTION
+    ======================================= -->
+
+    <section class="prediction-hero">
+
+
+        <div class="prediction-info">
+
+            <span class="prediction-label">
+                YOUR PLACEMENT PROBABILITY
+            </span>
+
+            <h2>
+                Placement Readiness
+            </h2>
+
+            <p>
+                {{ readiness_text }}
+            </p>
+
+
+            <div class="readiness-badge">
+
+                <i class="fa-solid fa-bolt"></i>
+
+                {{ readiness }} Readiness
+
+            </div>
+
+        </div>
+
+
+        <!-- CIRCLE -->
+
+        <div class="progress-wrapper">
+
+            <div class="progress-circle"
+                 style="--percentage: {{ placement_probability }};">
+
+                <div class="progress-inner">
+
+                    <strong
+                        class="counter"
+                        data-target="{{ placement_probability }}">
+                        0
+                    </strong>
+
+                    <span>
+                        %
+                    </span>
+
+                    <small>
+                        Probability
+                    </small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ======================================
+         FACTOR CARDS
+    ======================================= -->
+
+    <section class="factor-grid">
+
+
+        <!-- Resume -->
+
+        <div class="factor-card">
+
+            <div class="factor-icon">
+
+                <i class="fa-solid fa-file-circle-check"></i>
+
+            </div>
+
+            <div class="factor-content">
+
+                <span>
+                    Resume Strength
+                </span>
+
+                <strong>
+                    {{ resume_score }}%
+                </strong>
+
+                <div class="bar">
+
+                    <div class="bar-fill"
+                         data-width="{{ resume_score }}">
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- Skills -->
+
+        <div class="factor-card">
+
+            <div class="factor-icon">
+
+                <i class="fa-solid fa-code"></i>
+
+            </div>
+
+            <div class="factor-content">
+
+                <span>
+                    Technical Skills
+                </span>
+
+                <strong>
+                    {{ skill_score }}%
+                </strong>
+
+                <div class="bar">
+
+                    <div class="bar-fill"
+                         data-width="{{ skill_score }}">
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- Academics -->
+
+        <div class="factor-card">
+
+            <div class="factor-icon">
+
+                <i class="fa-solid fa-graduation-cap"></i>
+
+            </div>
+
+            <div class="factor-content">
+
+                <span>
+                    Academic Profile
+                </span>
+
+                <strong>
+                    {{ academic_score }}%
+                </strong>
+
+                <div class="bar">
+
+                    <div class="bar-fill"
+                         data-width="{{ academic_score }}">
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ======================================
+         TWO COLUMN SECTION
+    ======================================= -->
+
+    <section class="insight-grid">
+
+
+        <!-- ==================================
+             STRENGTHS
+        =================================== -->
+
+        <div class="insight-card strengths">
+
+            <div class="section-header">
+
+                <div class="section-icon">
+
+                    <i class="fa-solid fa-shield-heart"></i>
+
+                </div>
+
+                <div>
+
+                    <h2>
+                        Your Strengths
+                    </h2>
+
+                    <p>
+                        Factors helping your placement profile
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="insight-list">
+
+                {% for item in strengths %}
+
+                <div class="insight-item">
+
+                    <span class="check-icon">
+
+                        <i class="fa-solid fa-check"></i>
+
+                    </span>
+
+                    <span>
+                        {{ item }}
+                    </span>
+
+                </div>
+
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ==================================
+             IMPROVEMENTS
+        =================================== -->
+
+        <div class="insight-card improvements">
+
+            <div class="section-header">
+
+                <div class="section-icon">
+
+                    <i class="fa-solid fa-arrow-trend-up"></i>
+
+                </div>
+
+                <div>
+
+                    <h2>
+                        Areas To Improve
+                    </h2>
+
+                    <p>
+                        Focus on these areas for better results
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="insight-list">
+
+                {% for item in improvements %}
+
+                <div class="insight-item">
+
+                    <span class="warning-icon">
+
+                        <i class="fa-solid fa-arrow-up"></i>
+
+                    </span>
+
+                    <span>
+                        {{ item }}
+                    </span>
+
+                </div>
+
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ======================================
+         SKILLS SNAPSHOT
+    ======================================= -->
+
+    <section class="skills-section">
+
+
+        <div class="section-title">
+
+            <div class="title-icon">
+
+                <i class="fa-solid fa-microchip"></i>
+
+            </div>
+
+            <div>
+
+                <h2>
+                    Skills Snapshot
+                </h2>
+
+                <p>
+                    Skills detected from your resume
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="skill-tags">
+
+            {% for skill in detected_skills %}
+
+            <span class="skill-tag">
+
+                <i class="fa-solid fa-check"></i>
+
+                {{ skill }}
+
+            </span>
+
+            {% endfor %}
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ======================================
+         MISSING SKILLS
+    ======================================= -->
+
+    {% if missing_skills %}
+
+    <section class="missing-section">
+
+        <div class="section-title">
+
+            <div class="title-icon warning">
+
+                <i class="fa-solid fa-triangle-exclamation"></i>
+
+            </div>
+
+            <div>
+
+                <h2>
+                    Skills That Can Improve Your Chances
+                </h2>
+
+                <p>
+                    Consider learning these placement-oriented skills
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="missing-tags">
+
+            {% for skill in missing_skills %}
+
+            <span class="missing-tag">
+
+                <i class="fa-solid fa-plus"></i>
+
+                {{ skill }}
+
+            </span>
+
+            {% endfor %}
+
+        </div>
+
+    </section>
+
+    {% endif %}
+
+
+
+    <!-- ======================================
+         NEXT STEPS
+    ======================================= -->
+
+    <section class="next-section">
+
+        <div class="rocket">
+
+            <i class="fa-solid fa-rocket"></i>
+
+        </div>
+
+
+        <div class="next-content">
+
+            <span>
+                NEXT STEP
+            </span>
+
+            <h2>
+                Continue Your Placement Journey
+            </h2>
+
+            <p>
+                Practice interviews, improve your skills
+                and explore relevant job opportunities.
+            </p>
+
+        </div>
+
+
+        <div class="action-buttons">
+
+            <a href="{{ url_for('interview') }}"
+               class="action-btn primary">
+
+                <i class="fa-solid fa-user-tie"></i>
+
+                AI Mock Interview
+
+            </a>
+
+
+            <a href="{{ url_for('jobs') }}"
+               class="action-btn secondary">
+
+                <i class="fa-solid fa-briefcase"></i>
+
+                Explore Jobs
+
+            </a>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- BACK -->
+
+    <a href="{{ url_for('dashboard') }}"
+       class="back-dashboard">
+
+        <i class="fa-solid fa-arrow-left"></i>
+
+        Back to Dashboard
+
+    </a>
+
+
+</main>
+
+
+{% endif %}
+
+
+
+<script src="{{ url_for('static', filename='placement.js') }}"></script>
+
+</body>
+
+</html>
