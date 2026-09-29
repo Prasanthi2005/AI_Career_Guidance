@@ -905,3 +905,4 @@ If you plan to distribute or deploy the project publicly, add an appropriate ope
   <strong>🚀 AI Career Guidance & Placement Platform</strong><br>
   Helping students move from career uncertainty to placement readiness.
 </p>
+
