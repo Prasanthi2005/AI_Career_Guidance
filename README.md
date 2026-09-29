@@ -1,272 +1,176 @@
-# 🚀 AI Career Guidance Platform
+# 🤖 AI Career Guidance & Placement Platform
 
-> **An AI-powered full-stack career platform for students** — resume analysis, skill-gap detection, career roadmaps, live job discovery, AI assistance, mock interviews, Google authentication, profiles and placement-readiness insights in one modern web application.
+<p align="center">
+  <strong>AI-powered career discovery, resume intelligence, skill-gap analysis, learning roadmaps, interview preparation, and placement support — in one full-stack web platform.</strong>
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-3.x-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python">
+  <img src="https://img.shields.io/badge/Flask-Web%20Framework-000000?style=for-the-badge&logo=flask&logoColor=white" alt="Flask">
+  <img src="https://img.shields.io/badge/MySQL-Database-4479A1?style=for-the-badge&logo=mysql&logoColor=white" alt="MySQL">
+  <img src="https://img.shields.io/badge/Google-OAuth-4285F4?style=for-the-badge&logo=google&logoColor=white" alt="Google">
+  <img src="https://img.shields.io/badge/Gemini-AI-8E75B2?style=for-the-badge&logo=google&logoColor=white" alt="Gemini">
+  <img src="https://img.shields.io/badge/HTML5-Frontend-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5">
+  <img src="https://img.shields.io/badge/CSS3-UI-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="CSS3">
+  <img src="https://img.shields.io/badge/JavaScript-Interactions-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript">
+</p>
 
 ---
 
-## ✨ Project Overview
+## 📌 Overview
 
-The **AI Career Guidance Platform** is a full-stack Flask application designed to help college students move from **resume preparation → skill analysis → career planning → job discovery → interview preparation**.
+**AI Career Guidance & Placement Platform** is a full-stack career-support web application designed to help students and job seekers understand their career direction, evaluate their skills, improve their resumes, prepare for interviews, discover relevant opportunities, and follow structured learning roadmaps.
 
-The backend uses Flask with MySQL, environment-based configuration, Google OAuth, Gemini AI and external job APIs. The current application includes resume PDF validation/analysis, detected skills, missing-skill recommendations, career suggestions, job matching and an AI career assistant. fileciteturn1file1L174-L216
+The platform brings together multiple stages of the career journey:
+
+> **Profile → Resume → Career Recommendation → Skill Gap → Learning Roadmap → Interview Preparation → Job Discovery → Placement Readiness**
+
+Instead of providing only static career information, the application combines user profile data, resume-related analysis, skill matching, learning resources, interview practice, job information, recruiter workflows, and an AI career assistant into a single experience.
 
 ---
 
-## 🖼️ Project Output Preview
+## ✨ Core Capabilities
 
-![AI Career Guidance Platform — Project Output](docs/images/project-overview.png)
-
-> **Project output showcase:** This visual presents the main application areas represented by the current project scope: Home, Dashboard, Resume Analyzer, Skill Gap Analysis, Jobs, AI Career Assistant, Mock Interview, Profile and responsive/mobile views.
-
-### Main Screens
-
-| Screen | Preview |
-|---|---|
-| 🏠 Home | `docs/images/project-overview.png` |
-| 📊 Dashboard | `docs/images/project-overview.png` |
-| 📄 Resume Analyzer | `docs/images/project-overview.png` |
-| 🎯 Skill Gap Analysis | `docs/images/project-overview.png` |
-| 💼 Job Opportunities | `docs/images/project-overview.png` |
-| 🤖 AI Career Assistant | `docs/images/project-overview.png` |
-| 🎤 Mock Interview | `docs/images/project-overview.png` |
-| 👤 Profile | `docs/images/project-overview.png` |
-
-> For an exact screenshot of every live page, replace the showcase image with screenshots captured from the running application.
-
-## 🖥️ Individual Project Screens
-
-Each major application screen is provided separately so the GitHub README stays clean, visual and professional.
-
-### 🏠 Home Page
-![Home Page](docs/images/home.png)
-
-### 🔐 Login Page
-![Login Page](docs/images/login.png)
-
-### 📊 Dashboard
-![Dashboard](docs/images/dashboard.png)
-
-### 📄 Resume Analyzer
-![Resume Analyzer](docs/images/resume-analyzer.png)
-
-### 🎯 Skill Gap Analysis
-![Skill Gap Analysis](docs/images/skill-gap.png)
-
-### 💼 Job Opportunities
-![Job Opportunities](docs/images/jobs.png)
-
-### 🤖 AI Career Assistant
-![AI Career Assistant](docs/images/ai-assistant.png)
-
-### 🎤 Mock Interview
-![Mock Interview](docs/images/mock-interview.png)
-
-### 👤 Profile
-![Profile](docs/images/profile.png)
-
-### 📱 Responsive / Mobile View
-![Mobile View](docs/images/mobile.png)
-
-## 🖼️ Product Preview
-
-![AI Career Guidance Platform](docs/images/feature-overview.svg)
-
-![Platform Architecture](docs/images/architecture.svg)
-
-
-> Add your actual screenshots to `docs/images/` using the filenames below. GitHub will automatically render them after you push the images.
-
-### 🏠 Home / Landing Page
-
-![AI Career Platform Home](docs/images/home.png)
-
-### 📊 Student Dashboard
-
-![Student Dashboard](docs/images/dashboard.png)
+### 🎯 AI Career Guidance
+- Career-role recommendations based on user information and skills.
+- Support for multiple technology and career paths.
+- Career descriptions, required skills, and structured learning roadmaps.
+- Personalized direction for improving employability.
 
 ### 📄 AI Resume Analyzer
+- Resume upload support for **PDF, DOC, and DOCX** files.
+- Resume scoring and analysis workflow.
+- Skill extraction and missing-skill identification.
+- Resume improvement recommendations.
+- ATS-oriented resume improvement concepts.
 
-![AI Resume Analyzer](docs/images/resume-analyzer.png)
+### 🧩 Skill Gap Analysis
+- Compares available user skills with career-specific required skills.
+- Separates existing skills from missing skills.
+- Calculates learning progress against a selected career path.
+- Produces a personalized skill-development direction.
 
-### 💼 AI-Matched Jobs
+### 📚 Personalized Learning Roadmap
+- Career-specific learning paths.
+- Structured roadmap stages.
+- Topic descriptions for each stage.
+- Existing vs. missing skill tracking.
+- Progress calculation based on matched skills.
+- Learning notes support for individual skills.
 
-![AI Matched Jobs](docs/images/jobs.png)
+### 🎤 AI Mock Interview
+- Technical and HR-style interview questions.
+- Answer submission workflow.
+- Communication, confidence, technical, and grammar evaluation fields.
+- Overall interview score calculation.
+- Interview feedback and preparation tips.
 
-### 🎯 Skill Gap & Career Roadmap
+### 💼 Job Discovery & Placement Support
+- Job listings.
+- Job detail pages.
+- Job search.
+- Recommended jobs.
+- Saved jobs.
+- Job application workflow.
+- Placement-readiness information.
 
-![Skill Gap](docs/images/skill-gap.png)
+### 🏢 Recruiter Module
+- Recruiter dashboard.
+- Job posting workflow.
+- Job management.
+- Applicant viewing.
+- Candidate shortlisting.
+- Job deletion workflow.
+
+### 🔐 Authentication & Account Security
+- Student registration and login.
+- Session-based authentication.
+- Google OAuth sign-in.
+- Logout.
+- Forgot-password workflow.
+- Email OTP verification.
+- Password reset workflow.
 
 ### 🤖 AI Career Assistant
+- Authenticated career assistant endpoint.
+- Gemini-powered conversational responses.
+- Short, student-friendly answers.
+- Technical questions can receive concise explanations and examples.
 
-![AI Career Assistant](docs/images/ai-assistant.png)
-
-### 🎤 Mock Interview
-
-![Mock Interview](docs/images/mock-interview.png)
-
----
-
-## 🌟 Key Features
-
-| Feature | Description |
-|---|---|
-| 🔐 Authentication | Student registration, login, sessions and Google OAuth |
-| 📧 OTP Password Reset | Gmail SMTP based OTP flow |
-| 📄 Resume Analyzer | Upload and analyze PDF resumes |
-| 🧠 AI Assistant | Gemini-powered career Q&A |
-| 🧩 Skill Detection | Detects technical skills from resumes |
-| 📈 Resume Score | Calculates resume quality using skills, structure and profile information |
-| 🎯 Placement Readiness | Generates a placement-readiness score |
-| 🛠️ Skill Gap Analysis | Compares current skills with career requirements |
-| 🗺️ Career Roadmaps | Career-specific skills and learning paths |
-| 💼 Live Job Search | Fetches jobs through the Adzuna API |
-| 🎯 Job Skill Matching | Matches detected resume skills against job descriptions |
-| 🎤 Mock Interview | Evaluates communication, technical knowledge, relevance and confidence |
-| 👤 Student Profile | Profile, education, skills, projects and professional links |
-| 📁 Resume Storage | Securely generated filenames for uploaded resumes |
-| 🔌 Modular Backend | Flask Blueprints for auth, students, jobs, resume and interview modules |
-
-The code registers dedicated Flask blueprints for authentication, student, jobs, resume and interview functionality. fileciteturn1file1L204-L216 fileciteturn1file1L262-L267
+### 📊 Student Dashboard
+- Profile overview.
+- Resume score.
+- Interview score.
+- Placement-related metrics.
+- Job application information.
+- Career and skill progress.
 
 ---
 
-## 🧠 AI & Resume Intelligence
+## 🧠 Platform Workflow
 
-The platform uses the Google Gemini API through the `google-genai` SDK. The AI assistant sends a focused career-assistance prompt and returns concise responses for students. fileciteturn1file0L31-L59
-
-The resume analyzer:
-
-- accepts PDF resumes
-- validates that the uploaded file is a PDF
-- extracts text using `pypdf`
-- detects email, phone, GitHub and LinkedIn information
-- detects technical skills
-- identifies resume sections
-- calculates skill and structure scores
-- identifies missing skills
-- generates career suggestions
-- stores the analysis result in MySQL
-
-The application currently includes skill patterns for technologies such as Python, Java, C++, HTML, CSS, JavaScript, React, Flask, Django, MySQL, Machine Learning, Pandas, NumPy, TensorFlow, PyTorch, Git, GitHub, Docker, AWS and Azure. fileciteturn0file0L683-L743
-
----
-
-## 💼 Live Job Intelligence
-
-The jobs module integrates with the **Adzuna Jobs API** and supports career-oriented searches such as:
-
-- Frontend Developer
-- Backend Developer
-- Python Developer
-- Python Full Stack Developer
-- Full Stack Developer
-- AI / Machine Learning Engineer
-- Data Scientist
-- Data Analyst
-- Database / SQL Developer
-- Cloud Engineer
-- Software Developer
-
-The backend can retrieve live job data, process company/location/salary details and calculate a resume-skill match percentage against each job description. fileciteturn1file5L797-L894 fileciteturn1file7L1152-L1327
-
----
-
-## 🎤 AI Mock Interview
-
-Students can select a target career and submit interview answers.
-
-The evaluation pipeline currently calculates:
-
-- Communication
-- Technical knowledge
-- Relevance
-- Confidence
-- Overall score
-- Readiness status
-- Strengths
-- Improvement areas
-
-The result is stored in the session for the student's interview experience. fileciteturn1file9L1644-L1772
-
----
-
-## 🔐 Authentication & Security
-
-Google OAuth is integrated using Authlib and OpenID Connect. The callback retrieves the user's Google profile information and establishes the application session. fileciteturn1file2L329-L354
-
-Gmail SMTP is used for password-reset OTP delivery. The current backend uses `MAIL_USERNAME` and `MAIL_PASSWORD` from application configuration. fileciteturn1file4L644-L692
-
-### ⚠️ Never commit secrets
-
-Create a local `.env` file:
-
-```env
-SECRET_KEY=replace-with-a-long-random-secret
-GEMINI_API_KEY=your-gemini-api-key
-
-GOOGLE_CLIENT_ID=your-google-client-id
-GOOGLE_CLIENT_SECRET=your-google-client-secret
-
-MAIL_USERNAME=your-email@gmail.com
-MAIL_PASSWORD=your-google-app-password
-
-ADZUNA_APP_ID=your-adzuna-app-id
-ADZUNA_APP_KEY=your-adzuna-app-key
-
-DB_HOST=localhost
-DB_PORT=3306
-DB_NAME=ai_career_platform
-DB_USER=root
-DB_PASSWORD=your-database-password
+```text
+                    ┌─────────────────────┐
+                    │   Student / User    │
+                    └──────────┬──────────┘
+                               │
+                               ▼
+                    ┌─────────────────────┐
+                    │ Register / Login    │
+                    │ Google OAuth        │
+                    └──────────┬──────────┘
+                               │
+                               ▼
+                    ┌─────────────────────┐
+                    │   Student Profile   │
+                    └──────────┬──────────┘
+                               │
+                ┌──────────────┼──────────────┐
+                ▼              ▼              ▼
+        ┌─────────────┐ ┌─────────────┐ ┌──────────────┐
+        │   Resume    │ │   Career    │ │ AI Assistant │
+        │  Analysis   │ │ Recommendation│ │   Gemini     │
+        └──────┬──────┘ └──────┬──────┘ └──────────────┘
+               │               │
+               └───────┬───────┘
+                       ▼
+              ┌──────────────────┐
+              │  Skill Gap       │
+              │  Analysis        │
+              └────────┬─────────┘
+                       │
+                       ▼
+              ┌──────────────────┐
+              │ Learning Roadmap │
+              │ & Progress       │
+              └────────┬─────────┘
+                       │
+             ┌─────────┴──────────┐
+             ▼                    ▼
+      ┌──────────────┐     ┌──────────────┐
+      │ Mock         │     │ Job Search & │
+      │ Interview    │     │ Applications │
+      └──────┬───────┘     └──────┬───────┘
+             │                    │
+             └──────────┬─────────┘
+                        ▼
+              ┌──────────────────┐
+              │ Placement        │
+              │ Readiness        │
+              └──────────────────┘
 ```
-
-Add `.env` to `.gitignore`:
-
-```gitignore
-.env
-__pycache__/
-*.pyc
-```
-
-**Never upload API keys, OAuth secrets, Gmail App Passwords or database passwords to GitHub.**
 
 ---
 
 ## 🏗️ Architecture
 
-```mermaid
-flowchart TD
-    A[Student / Browser] --> B[HTML + CSS + JavaScript]
-    B --> C[Flask Application]
-    C --> D[Authentication]
-    C --> E[Resume Analyzer]
-    C --> F[AI Career Assistant]
-    C --> G[Mock Interview]
-    C --> H[Job Search]
-    C --> I[Student Profile]
-
-    D --> J[Google OAuth]
-    E --> K[pypdf]
-    F --> L[Google Gemini]
-    H --> M[Adzuna Jobs API]
-
-    C --> N[(MySQL Database)]
-    C --> O[Secure Upload Storage]
-    C --> P[Gmail SMTP]
-```
-
----
-
-## 📁 Recommended Project Structure
+The application follows a modular Flask architecture with separate route modules, templates, static assets, database access, and configuration.
 
 ```text
 AI-Career-Guidance-Platform/
 │
 ├── app.py
 ├── config.py
-├── requirements.txt
-├── README.md
-├── .env
 ├── .gitignore
 │
 ├── database/
@@ -275,108 +179,353 @@ AI-Career-Guidance-Platform/
 ├── routes/
 │   ├── auth.py
 │   ├── student.py
-│   ├── jobs.py
 │   ├── resume.py
-│   └── interview.py
+│   ├── interview.py
+│   ├── jobs.py
+│   └── recruiter.py
 │
 ├── templates/
 │   ├── index.html
+│   ├── dashboard.html
 │   ├── login.html
 │   ├── register.html
-│   ├── dashboard.html
-│   ├── resume.html
-│   ├── jobs.html
-│   ├── interview.html
 │   ├── profile.html
-│   └── ...
+│   ├── resume.html
+│   ├── skill_gap.html
+│   ├── learning.html
+│   ├── learning_notes.html
+│   ├── interview.html
+│   ├── jobs.html
+│   ├── placement.html
+│   ├── forgot_password.html
+│   ├── verify_otp.html
+│   └── reset_password.html
 │
 ├── static/
-│   ├── css/
-│   ├── js/
+│   ├── *.css
+│   ├── *.js
 │   ├── images/
 │   └── uploads/
 │
-└── docs/
-    └── images/
-        ├── home.png
-        ├── dashboard.png
-        ├── resume-analyzer.png
-        ├── jobs.png
-        ├── skill-gap.png
-        ├── ai-assistant.png
-        └── mock-interview.png
+├── ml/
+│   └── Machine-learning / intelligence components
+│
+└── uploads/
+    └── User-uploaded files
 ```
 
 ---
 
 ## 🛠️ Technology Stack
 
-### Frontend
-
-- HTML5
-- CSS3
-- JavaScript
-- Responsive UI
-- Fetch API / AJAX-style API communication
-
-### Backend
-
-- Python
-- Flask
-- Flask Blueprints
-- Jinja Templates
-- Session-based authentication
-- REST-style JSON endpoints
-
-### Database
-
-- MySQL
-- `mysql-connector-python`
-
-### AI
-
-- Google Gemini
-- `google-genai`
-
-### Authentication
-
-- Authlib
-- Google OAuth 2.0
-- OpenID Connect
-
-### Resume Processing
-
-- pypdf
-- Python regular expressions
-
-### External Services
-
-- Adzuna Jobs API
-- Gmail SMTP
-- Google OAuth
-- Google Gemini API
+| Layer | Technology |
+|---|---|
+| Backend | Python, Flask |
+| Database | MySQL |
+| Frontend | HTML5, CSS3, JavaScript |
+| UI Icons | Font Awesome |
+| Authentication | Flask sessions, Google OAuth |
+| AI Assistant | Google Gemini API |
+| Email | Gmail SMTP |
+| Job Data | Adzuna API integration |
+| File Processing | PDF / DOC / DOCX upload workflow |
+| Architecture | Modular Flask routes / Blueprints |
+| Version Control | Git & GitHub |
 
 ---
 
-## ⚙️ Installation
+## 🔐 Authentication Flow
+
+The platform supports both traditional authentication and Google-based authentication.
+
+### Standard Authentication
+
+```text
+Register
+   ↓
+User Account
+   ↓
+Login
+   ↓
+Session Created
+   ↓
+Dashboard
+```
+
+### Password Recovery
+
+```text
+Forgot Password
+       ↓
+Enter Registered Email
+       ↓
+Generate OTP
+       ↓
+Send OTP through Email
+       ↓
+Verify OTP
+       ↓
+Create New Password
+       ↓
+Return to Login
+```
+
+### Google OAuth
+
+```text
+Login with Google
+       ↓
+Google Authorization
+       ↓
+OAuth Callback
+       ↓
+User Information
+       ↓
+Session
+       ↓
+Dashboard
+```
+
+---
+
+## 📄 Resume Analysis Flow
+
+```text
+Upload Resume
+      ↓
+Validate File Type
+      ↓
+Secure Filename
+      ↓
+Save Resume
+      ↓
+Analyze Resume
+      ↓
+Extract Skills
+      ↓
+Calculate / Display Resume Score
+      ↓
+Identify Missing Skills
+      ↓
+Generate Recommendations
+```
+
+Supported resume formats:
+
+- `.pdf`
+- `.doc`
+- `.docx`
+
+---
+
+## 🧩 Skill Gap & Learning Engine
+
+The learning module maintains career-specific information such as:
+
+- Career description
+- Required skills
+- Learning roadmap
+- Roadmap topics
+- Existing skills
+- Missing skills
+- Completion progress
+
+The application compares normalized user skills against required career skills and calculates progress using the number of matched skills.
+
+### Example
+
+```text
+Target Career
+     │
+     ├── Required Skills
+     │      ├── Python
+     │      ├── SQL
+     │      ├── Git
+     │      ├── Docker
+     │      └── Cloud
+     │
+     └── User Skills
+            ├── Python       ✓
+            ├── SQL          ✓
+            ├── Git          ✓
+            ├── Docker       ✗
+            └── Cloud        ✗
+
+                ↓
+
+        Skill Gap Identified
+                ↓
+        Personalized Roadmap
+```
+
+---
+
+## 🎤 Interview Preparation
+
+The interview module provides:
+
+- Common HR questions
+- Technical questions
+- Mock interview mode
+- Answer submission
+- Communication score
+- Confidence score
+- Technical score
+- Grammar score
+- Overall score
+- Improvement feedback
+- Interview preparation tips
+
+The interview result is designed to give users a structured view of areas they can improve before placement interviews.
+
+---
+
+## 💼 Job & Recruiter Ecosystem
+
+### Student Side
+
+Students can:
+
+- Browse jobs
+- View job details
+- Search jobs
+- View recommended opportunities
+- Save jobs
+- Remove saved jobs
+- Apply for jobs
+
+### Recruiter Side
+
+Recruiters can:
+
+- View recruiter dashboard
+- Post jobs
+- View posted jobs
+- View applicants
+- Shortlist candidates
+- Delete jobs
+
+This creates a two-sided placement workflow connecting **job seekers and recruiters** within the same platform architecture.
+
+---
+
+## 🤖 Gemini AI Assistant
+
+The platform includes an authenticated AI career assistant powered by the Gemini API.
+
+The assistant is designed for:
+
+- Career questions
+- Technical questions
+- Interview preparation
+- Short explanations
+- Student-friendly guidance
+
+The application sends a constrained prompt so that responses remain concise and focused on the student's question.
+
+> **Important:** API keys must be stored in environment variables and must never be committed to GitHub.
+
+---
+
+## 🌐 Important Application Routes
+
+The application includes workflows such as:
+
+| Route | Purpose |
+|---|---|
+| `/` | Landing / Home page |
+| `/login` | User login |
+| `/register` | User registration |
+| `/logout` | Logout |
+| `/login/google` | Google OAuth login |
+| `/google/callback` | Google OAuth callback |
+| `/dashboard` | Student dashboard |
+| `/profile` | Student profile |
+| `/resume` | Resume workflow |
+| `/skill-gap` | Skill-gap analysis |
+| `/career` | Career recommendation |
+| `/learning` | Personalized learning |
+| `/learning/notes` | Learning notes |
+| `/interview` | Interview preparation |
+| `/jobs` | Job discovery |
+| `/placement` | Placement information |
+| `/forgot-password` | Password recovery |
+| `/verify-otp` | OTP verification |
+| `/reset-password` | Password reset |
+| `/ai-assistant` | Gemini AI assistant |
+
+---
+
+## 📁 Frontend Structure
+
+The UI is separated into dedicated stylesheets and JavaScript files for major application areas.
+
+### CSS Modules
+
+Examples include:
+
+```text
+career.css
+dashboard.css
+forgot_password.css
+interview.css
+jobs.css
+learning.css
+login.css
+placement.css
+profile.css
+register.css
+reset_password.css
+resume.css
+skill_gap.css
+style.css
+```
+
+### JavaScript Modules
+
+Examples include:
+
+```text
+career.js
+dashboard.js
+forgot_password.js
+interview.js
+jobs.js
+learning.js
+learning_notes.js
+login.js
+placement.js
+profile.js
+register.js
+reset_password.js
+resume.js
+skill_gap.js
+verify_otp.js
+```
+
+This separation keeps page-specific UI behavior maintainable and easier to extend.
+
+---
+
+## ⚙️ Local Setup
 
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/AI-Career-Guidance-Platform.git
+git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY.git
 cd AI-Career-Guidance-Platform
 ```
 
 ### 2. Create a virtual environment
 
-Windows:
+#### Windows
 
-```powershell
+```bash
 python -m venv venv
 venv\Scripts\activate
 ```
 
-macOS/Linux:
+#### macOS / Linux
 
 ```bash
 python3 -m venv venv
@@ -385,25 +534,57 @@ source venv/bin/activate
 
 ### 3. Install dependencies
 
+If the project contains a `requirements.txt` file:
+
 ```bash
 pip install -r requirements.txt
 ```
 
-### 4. Configure environment variables
+Otherwise install the required packages used by the application and then generate the dependency file:
 
-Create:
-
-```text
-.env
+```bash
+pip freeze > requirements.txt
 ```
 
-and add the required credentials.
+### 4. Configure environment variables
+
+Create a `.env` file locally.
+
+Example:
+
+```env
+SECRET_KEY=your_secret_key
+
+MYSQL_HOST=localhost
+MYSQL_USER=root
+MYSQL_PASSWORD=your_mysql_password
+MYSQL_DB=ai_career_platform
+
+GOOGLE_CLIENT_ID=your_google_client_id
+GOOGLE_CLIENT_SECRET=your_google_client_secret
+
+GEMINI_API_KEY=your_gemini_api_key
+
+ADZUNA_APP_ID=your_adzuna_app_id
+ADZUNA_APP_KEY=your_adzuna_app_key
+
+MAIL_USERNAME=your_email@gmail.com
+MAIL_PASSWORD=your_gmail_app_password
+```
+
+**Never commit `.env` to GitHub.**
 
 ### 5. Configure MySQL
 
-Create the required MySQL database and configure the database connection values in your environment/configuration.
+Create the application database:
 
-### 6. Run the application
+```sql
+CREATE DATABASE ai_career_platform;
+```
+
+Then configure the database credentials through environment variables.
+
+### 6. Run the Flask application
 
 ```bash
 python app.py
@@ -412,215 +593,315 @@ python app.py
 Open:
 
 ```text
-http://127.0.0.1:5000
+http://127.0.0.1:5000/
 ```
+
+---
+
+## 🔒 Security Checklist Before GitHub Push
+
+Before pushing this project to a public repository:
+
+- [ ] Remove all API keys from source code.
+- [ ] Remove Google OAuth client secrets from source code.
+- [ ] Remove Gmail passwords / app passwords from source code.
+- [ ] Remove database passwords from source code.
+- [ ] Keep `.env` in `.gitignore`.
+- [ ] Add a safe `.env.example`.
+- [ ] Remove private uploaded resumes and personal files.
+- [ ] Remove unnecessary `__pycache__` folders.
+- [ ] Do not commit generated `.pyc` files.
+- [ ] Rotate any credential that has already been exposed.
+
+### Recommended `.gitignore`
+
+```gitignore
+.env
+.env.*
+!.env.example
+
+__pycache__/
+*.pyc
+*.pyo
+
+venv/
+.venv/
+
+instance/
+
+uploads/
+static/uploads/
+
+*.log
+
+.DS_Store
+Thumbs.db
+```
+
+---
+
+## 🧪 Development Notes
+
+For local development, Flask debug mode can be useful. For production deployment, use a production WSGI server and set:
+
+```text
+DEBUG=False
+```
+
+Sensitive configuration should be supplied through the hosting platform's environment-variable settings rather than hard-coded in Python files.
 
 ---
 
 ## 🚀 Production Deployment
 
-For production deployment, use a WSGI server such as Gunicorn.
+The application can be prepared for deployment on platforms such as:
 
-```bash
-gunicorn app:app
-```
+- Render
+- Railway
+- PythonAnywhere
+- AWS
+- Azure
+- Google Cloud
+- Other platforms supporting Python/Flask
 
-Typical Render configuration:
-
-**Build Command**
-
-```bash
-pip install -r requirements.txt
-```
-
-**Start Command**
-
-```bash
-gunicorn app:app
-```
-
-Set all secrets as **Environment Variables** in the hosting provider rather than committing `.env` to GitHub.
-
----
-
-## 🔑 Required API Credentials
-
-| Service | Environment Variable |
-|---|---|
-| Gemini | `GEMINI_API_KEY` |
-| Google OAuth | `GOOGLE_CLIENT_ID` |
-| Google OAuth | `GOOGLE_CLIENT_SECRET` |
-| Gmail SMTP | `MAIL_USERNAME` |
-| Gmail SMTP | `MAIL_PASSWORD` |
-| Adzuna | `ADZUNA_APP_ID` |
-| Adzuna | `ADZUNA_APP_KEY` |
-| Flask | `SECRET_KEY` |
-| MySQL | `DB_HOST`, `DB_PORT`, `DB_NAME`, `DB_USER`, `DB_PASSWORD` |
-
----
-
-## 🔄 Application Flow
+A typical deployment architecture is:
 
 ```text
-Student
-   ↓
-Register / Google Login
-   ↓
-Student Dashboard
-   ↓
-Upload Resume
-   ↓
-PDF Text Extraction
-   ↓
-Skill + Structure + Contact Analysis
-   ↓
-Resume Score + Placement Readiness
-   ↓
-Career Recommendation
-   ↓
-Skill Gap Analysis
-   ↓
-Career Roadmap
-   ↓
-Live Job Search
-   ↓
-Resume ↔ Job Skill Matching
-   ↓
-AI Mock Interview
-   ↓
-Interview Evaluation
+GitHub Repository
+       │
+       ▼
+Cloud Web Service
+       │
+       ├── Flask Application
+       │
+       ├── Environment Variables
+       │
+       └── Production WSGI Server
+                │
+                ▼
+             MySQL
 ```
 
----
+For production:
 
-## 📊 Resume Scoring Model
-
-The current implementation combines:
-
-```text
-Skill Score       → 40%
-Structure Score   → 35%
-Contact Score     → 15%
-Profile Score     → 10%
-```
-
-The backend then constrains the resulting score to a 0–100 range. fileciteturn0file0L873-L975
-
-Placement-readiness calculation uses:
-
-```text
-Skill Score       → 45%
-Structure Score   → 25%
-Contact Score     → 15%
-Profile Score     → 15%
-```
-
-fileciteturn0file0L997-L1015
+1. Configure environment variables.
+2. Configure a cloud MySQL database.
+3. Disable Flask debug mode.
+4. Configure the Google OAuth redirect URI for the production domain.
+5. Configure Gmail SMTP credentials securely.
+6. Configure Gemini and Adzuna API credentials.
+7. Use persistent storage or object storage for uploaded files.
+8. Configure a production WSGI server.
 
 ---
 
-## 🎯 Career Skill Gap
+## 📸 Project Screenshots
 
-The platform contains career-specific skill requirements for roles including Frontend Developer, Backend Developer, Python Full Stack Developer, AI/ML Engineer, Data Scientist, Cloud Engineer, Database/SQL Developer and Software Developer. fileciteturn1file3L490-L575
-
-The skill-gap module compares detected resume skills with the target career requirements and calculates readiness based on the number of matched skills. fileciteturn1file3L577-L634
-
----
-
-## 🧪 Testing Checklist
-
-Before deployment, verify:
-
-- [ ] Registration works
-- [ ] Login works
-- [ ] Google login works
-- [ ] Logout works
-- [ ] Forgot password OTP works
-- [ ] Resume PDF upload works
-- [ ] Invalid/non-PDF upload is rejected
-- [ ] Resume analysis is saved
-- [ ] Skill-gap analysis works
-- [ ] Career roadmap loads
-- [ ] Live jobs load
-- [ ] Job filters work
-- [ ] AI assistant responds
-- [ ] Mock interview works
-- [ ] Interview evaluation works
-- [ ] Profile update works
-- [ ] Uploaded files are protected
-- [ ] Environment variables work
-- [ ] Production start command works
-
----
-
-## 🔒 Production Security Checklist
-
-Before making the project public:
-
-- Use a strong random `SECRET_KEY`
-- Never commit `.env`
-- Never expose Gemini, Adzuna or Google OAuth secrets
-- Use Gmail App Password instead of a normal Gmail password
-- Use HTTPS in production
-- Configure Google OAuth production redirect URI
-- Restrict uploaded file types and sizes
-- Keep user uploads outside public directories when possible
-- Use password hashing for production authentication
-- Validate and sanitize user input
-- Use database least-privilege credentials
-- Disable Flask debug mode in production
-
-> **Important:** The currently uploaded `app.py` contains a hard-coded `app.config["SECRET_KEY"] = "AI_CAREER_PLATFORM"` after loading the environment secret. For production, remove that hard-coded assignment so the environment-based secret is actually used. fileciteturn1file1L232-L250
-
----
-
-## 👨‍💻 Developer
-
-**AI Career Guidance Platform**
-
-Built as a full-stack student career-support platform combining:
-
-**Web Development + AI + Resume Intelligence + Job Search + Interview Preparation**
-
----
-
-## 📄 License
-
-Add your preferred license before publishing the repository.
+Add your GitHub screenshots here after uploading them to a repository folder such as `screenshots/`.
 
 Example:
 
+
+## 📸 Screenshots
+
+### Home Page
+![Home Page](screenshots/homes.png)
+### Login Page
+![login Page](screenshots/logins.png)
+### Register Page
+![register Page](screenshots/registers.png)
+### Dashboard
+![Dashboard](screenshots/dashboard.png)
+
+### Resume Analyzer
+![Resume Analyzer](screenshots/resume.png)
+### career recommendation Page
+![career Page](screenshots/career.png)
+
+
+### Skill Gap Analysis
+![Skill Gap](screenshots/skill-gap.png)
+### placement prediction Page
+![Skill gap Page](screenshots/placement.png)
+
+
+### Learning Roadmap
+![Learning Roadmap](screenshots/learning.png)
+
+### Mock Interview
+![Mock Interview](screenshots/interview.png)
+
+### Job Portal
+![Jobs](screenshots/jobs.png)
+### AI Assistant Page
+![AI Assistant Page](screenshots/ai.png)
+
+
+
+---
+
+## 🗂️ Module Summary
+
+| Module | Description |
+|---|---|
+| Authentication | Registration, login, logout, Google OAuth |
+| Password Recovery | Email OTP verification and reset |
+| Student Dashboard | Career and placement overview |
+| Profile | Student information and profile management |
+| Resume Analyzer | Upload, score, skills, recommendations |
+| Career Guidance | Career recommendation and role selection |
+| Skill Gap | Existing vs missing skills |
+| Learning | Career-specific roadmap and progress |
+| Interview | Mock interview and scoring |
+| Jobs | Search, recommendations, saved jobs, applications |
+| Recruiter | Job posting and applicant management |
+| AI Assistant | Gemini-powered career conversation |
+| Placement | Placement-readiness information |
+
+---
+
+## 🎯 Project Objectives
+
+The project is designed around five primary objectives:
+
+### 1. Career Clarity
+Help students identify suitable career directions based on their skills and interests.
+
+### 2. Employability Analysis
+Analyze resumes and identify technical skill gaps that may affect job readiness.
+
+### 3. Structured Learning
+Convert skill gaps into a practical, career-oriented learning roadmap.
+
+### 4. Interview Readiness
+Provide mock interview practice, scoring, feedback, and preparation guidance.
+
+### 5. Placement Support
+Connect career preparation with job discovery, applications, and recruiter workflows.
+
+---
+
+## 🔮 Future Enhancements
+
+Potential future improvements include:
+
+- Advanced NLP-based resume parsing.
+- Real ATS keyword analysis.
+- ML-based career recommendation models.
+- Personalized job matching using embeddings.
+- Real-time job aggregation.
+- Resume builder with multiple professional templates.
+- Video-based mock interviews.
+- Speech-to-text interview analysis.
+- Sentiment and communication analysis.
+- Recruiter authentication and role-based authorization.
+- Admin dashboard and analytics.
+- Notification system.
+- Course/resource recommendation engine.
+- Progress history and learning streaks.
+- Docker containerization.
+- CI/CD pipeline.
+- Automated testing.
+- Cloud object storage for resumes.
+- Production-grade logging and monitoring.
+
+---
+
+## 🧪 Suggested Testing Strategy
+
+A production-ready version can be tested across:
+
 ```text
-MIT License
+Authentication
+ ├── Registration
+ ├── Login
+ ├── Google OAuth
+ ├── Logout
+ └── Password Reset
+
+Resume
+ ├── PDF Upload
+ ├── DOC/DOCX Upload
+ ├── Invalid File
+ └── Resume Analysis
+
+Career
+ ├── Career Recommendation
+ ├── Skill Matching
+ ├── Skill Gap
+ └── Learning Roadmap
+
+Interview
+ ├── Question Loading
+ ├── Answer Submission
+ ├── Score Calculation
+ └── Feedback
+
+Jobs
+ ├── Job Listing
+ ├── Search
+ ├── Save / Remove
+ └── Apply
+
+Recruiter
+ ├── Job Posting
+ ├── Applicant Listing
+ ├── Shortlisting
+ └── Job Management
 ```
 
 ---
 
-## ⭐ Show Your Support
+## 📌 Repository Hygiene
 
-If this project helps you:
+For a clean professional GitHub repository, the following should **not** be committed:
 
 ```text
-⭐ Star the repository
-🍴 Fork the project
-🐛 Report issues
-💡 Suggest improvements
+.env
+private credentials
+database passwords
+OAuth client secrets
+Gmail app passwords
+API keys
+personal resumes
+personal profile images
+__pycache__
+*.pyc
+temporary files
+debug logs
 ```
+
+Keep only reusable source code, templates, static assets, safe documentation, and sanitized sample data.
 
 ---
 
-## 📌 Future Enhancements
+## 👨‍💻 Author
 
-- AI-generated resume rewriting
-- ATS keyword optimization
-- Persistent interview history
-- Personalized learning recommendations
-- Course recommendations
-- Job application tracking
-- Email notifications
-- Admin analytics dashboard
-- Docker deployment
-- CI/CD pipeline
-- Automated testing
-- Cloud object storage for resumes
-- Production-grade password hashing and account security
+**Bhavani**
+
+Full-Stack Developer | Python & Flask | AI Applications | Web Development
+
+---
+
+## ⭐ Why This Project?
+
+This project demonstrates how a modern career platform can combine:
+
+**Web Development + Database Systems + Authentication + AI APIs + Resume Intelligence + Skill Analysis + Learning Systems + Interview Preparation + Job Workflows**
+
+It is designed as an end-to-end portfolio project rather than a single-purpose AI demo.
+
+---
+
+## 📜 License
+
+This project is intended for educational, portfolio, and demonstration purposes.
+
+If you plan to distribute or deploy the project publicly, add an appropriate open-source license such as MIT and update this section accordingly.
+
+---
+
+<p align="center">
+  <strong>🚀 AI Career Guidance & Placement Platform</strong><br>
+  Helping students move from career uncertainty to placement readiness.
+</p>
