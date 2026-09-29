@@ -1,12 +1,7 @@
 .env
 __pycache__/
 *.pyc
-venv/
 .venv/
-
-uploads/
-static/uploads/
-static/profile_photos/
-
-*.db
-database.db
+venv/
+.vscode/
+.idea/
