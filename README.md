@@ -723,7 +723,8 @@ Example:
 ![Skill Gap](screenshots/skill-gap.png)
 ### placement prediction Page
 ![Skill gap Page](screenshots/placement.png)
-
+### Profile Page
+![AI Assistant Page](screenshots/profile.png)
 
 ### Learning Roadmap
 ![Learning Roadmap](screenshots/learning.png)
